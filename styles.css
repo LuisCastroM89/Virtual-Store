@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+div {
+    text-align: center;
+}
+
+header, main {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    margin: 20px;
+    font-size: 0.9em;
+    color: #ffffff;
+    background-color: #00000073;
+}
