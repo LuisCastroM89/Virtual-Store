@@ -1,15 +1,145 @@
+/* Reset nav básico */
+.site-header {
+  background: #ffffff;
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.brand {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 700;
+}
+
+/* Contenedor nav */
+.site-nav {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Botón hamburguesa (móvil) */
+.nav-toggle {
+  display: none;
+  position: absolute;
+  right: 0.5rem;
+  top: -0.25rem;
+  background: transparent;
+  border: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.nav-toggle:focus-visible { outline: 2px solid #059cf3; outline-offset: 2px; }
+
+.nav-toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #333;
+  margin: 5px 0;
+  border-radius: 2px;
+}
+
+/* Lista de enlaces */
+.menu {
+  list-style: none;
+  display: inline-flex;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  padding: 0.75rem 0;
+  margin: 0;
+  align-items: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.menu li a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.35rem 0.25rem;
+  border-radius: 6px;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.menu li a:hover,
+.menu li a:focus-visible {
+  color: #0b6bb8;
+  background: #e7f3ff;
+}
+
+.menu li a[aria-current="page"] {
+  color: #0a8f3a;
+  background: #e8f8ef;
+}
+
+/* Hero */
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: .5rem;
+  margin-top: 1rem;
+}
+
+/* Accesibilidad */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px,1px,1px,1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* “Hero” opcional para destacadas */
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: .5rem;
+}
+
+/* Grid responsive */
+.grid {
+  --min: 200px;                     /* tamaño mínimo de cada tile */
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+}
+
+.tile img {
+  width: 100%;
+  aspect-ratio: 1 / 1;              /* cuadrado consistente */
+  object-fit: cover;                 /* usa 'contain' si NO quieres recorte */
+  border-radius: .5rem;
+  display: block;
+  background: #f6f6f6;              /* útil si usas contain para el “marco” */
+}
+
 body {
     display: grid;
     height: 150vh;
     grid-template-rows: auto 1fr auto;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0 1rem;
 }
 
 div {
     text-align: center;
+    padding: 1em;
+    font-size: 1.2em;
+    color: #059cf3c5;
 }
 
 header{
-    background-color: #6d6c6cec;
+    background-color: #ffffff;
     text-align: center;
     padding: 2em;
 }
@@ -44,4 +174,28 @@ main {
     aspect-ratio: 1 / 1;
     border-radius: 8px;
     object-fit: cover;
+}
+
+/* ————— Responsive ————— */
+@media (max-width: 600px) {
+  /* Mostrar hamburguesa y colapsar menú */
+  .nav-toggle { display: block; }
+
+  .menu {
+    display: none;                 /* oculto por defecto en móvil */
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fff;
+    margin-top: 2.5rem;
+  }
+
+  .menu.is-open { display: flex; } /* se activa con JS */
+
+  .menu li a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+  }
 }
