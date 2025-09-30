@@ -1,134 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Tienda Virtual Bugambilia">
-    <meta name="language" content="Spanish">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Tienda Virtual Bugambilia" />
+  <meta name="language" content="Spanish" />
 
-    <!-- Open Graph Protocol -->
-    <meta property="og:description" content="Venta de Productos Organicos como cremas para la piel, jabones, protector solar, aromaterapia y mas.">
-    <meta property="og:title" content="Venta de Productos Organicos - Bugambilia">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.bugambilia.com">
-    <meta property="og:image" content="img/LOGO ASECOMTRI.png">
-    <meta property="og:site_name" content="Bugambilia">
-    <meta property="og:locale" content="es_CO">
+  <!-- Open Graph -->
+  <meta property="og:description" content="Venta de Productos Orgánicos: cremas, jabones, protector solar, aromaterapia y más." />
+  <meta property="og:title" content="Venta de Productos Orgánicos - Bugambilia" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bugambilia.com" />
+  <meta property="og:image" content="img/LOGO ASECOMTRI.png" />
+  <meta property="og:site_name" content="Bugambilia" />
+  <meta property="og:locale" content="es_CO" />
 
-    <!-- Twitter now X -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tienda Virtual Bugambilia">
-    <meta name="twitter:description" content="Venta de Productos Organicos como cremas para la piel, jabones, protector solar, aromaterapia y mas.">
-    <meta name="twitter:image" content="img/LOGO ASECOMTRI.png">
+  <!-- X (Twitter) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tienda Virtual Bugambilia" />
+  <meta name="twitter:description" content="Productos orgánicos y bienestar." />
+  <meta name="twitter:image" content="img/LOGO ASECOMTRI.png" />
 
-    <!-- URL Oficial -->
-    <link rel="canonical" href="https://www.bugambilia.com/">
-    <!-- Agg Icon en page web y Apple Touch Icon -->
-    <link rel="icon" href="img/bugambilia-favicon.ico">
-    <link rel="icon" href="img/bugambilia-favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/bugambilia-180.png">
+  <link rel="canonical" href="https://www.bugambilia.com/" />
+  <link rel="icon" href="img/bugambilia-favicon.ico" />
+  <link rel="apple-touch-icon" href="img/bugambilia-180.png" />
 
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <title>Tienda Virtual</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <title>Tienda Virtual</title>
 </head>
 <body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="brand">Bugambilia</h1><br>
 
-    <header class="site-header">
-    <h1 class="brand">Tienda Virtual Bugambilia</h1>
-
-    <nav class="site-nav" aria-label="Menú principal">
+      <nav class="site-nav" aria-label="Menú principal">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="sr-only">Abrir menú</span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="sr-only">Abrir menú</span>
         </button>
 
         <ul id="menu" class="menu">
-        <li><a href="index.html" aria-current="page">Inicio</a></li>
-        <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
-        <li><a href="tienda.html">Tienda</a></li>
-        <li><a href="location.html">Ubicación</a></li>
-        <li><a href="contactanos.html">Contáctanos</a></li>
+          <li><a href="principal.html" aria-current="page">Inicio</a></li>
+          <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="location.html">Ubicación</a></li>
+          <li><a href="contactanos.html">Contáctanos</a></li>
         </ul>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
-    <img
-        src="img/imagen-inicial.jpg"
+  <!-- HERO (fuera del header) -->
+  <section class="hero" role="banner" aria-label="Portada">
+    <picture>
+      <!-- Puedes añadir sources webp si las tienes -->
+      <img
+        class="hero__img"
+        src="img/imagen-pagina-principal.jpg"
         alt="Fotografía de portada de la tienda Bugambilia"
-        loading="lazy"
-        width="1200" height="600"
-        class="hero-img"
-    />
-    </header>
+        loading="eager"
+        decoding="async"
+        width="2400" height="1200">
+    </picture>
+  </section>
 
-        <main>
-            <h2>Productos de la Tienda</h2>
-            <p>Bienvenidos a nuestra tienda virtual. Aquí encontrarás una variedad de productos y servicios diseñados para satisfacer tus necesidades.</p>
-            <h2>Aromaterapia</h2>
-            <img src="img/Aromaterapia/ritual-diario.jpg" alt="ritual diario">
-            
-            <div class="parent">
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario2.jpg" alt="ritual diario 2"></div>
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario3.jpg" alt="ritual diario 3"></div>
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario4.jpg" alt="ritual diario 4"></div>
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario-malva-romero.jpg" alt="ritual diario malva y romero"></div>
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario-manzanilla-lavanda.jpg" alt="ritual diario manzanilla y lavanda"></div>
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario-melisa-mandarina.jpg" alt="ritual diario melisa y mandarina"></div>
-                <div class="galery"><img src="img/Aromaterapia/ritual-diario-romero-cidron.jpg" alt="ritual diario romero y cidron"></div>
-            </div>
-            <section>
-                <h2>Topikids</h2>
-                <img src="img/Topikids/Topikids.jpg" alt="Topikids">
+  <!-- MAIN -->
+  <main class="site-main">
+    <div class="wrap">
 
-                <div class="parent">
-                    <div class="galery"><img src="img/Topikids/topikids-albahaca-lavanda.jpg" alt="topikids albahaca y lavanda"></div>
-                    <div class="galery"><img src="img/Topikids/topikids-calendula-geranio.jpg" alt="topikids calendula y geranio"></div>
-                </div>
-            </section>
+      <!-- 1) Texto izq / Imagen der -->
+      <section class="feature" id="aromaterapia" aria-labelledby="sec-aromaterapia">
+        <div class="feature__content reveal">
+          <h2 id="sec-aromaterapia">Aromaterapia</h2>
+          <p>
+            Sumérgete en una atmósfera de paz y renovación. Nuestra línea de aromaterapia combina aceites esenciales 
+            puros y sinérgicos, difusores elegantes y velas aromáticas para transformar tus espacios en santuarios 
+            sensoriales. Perfecto para meditar, relajarte al final del día o aportar equilibrio emocional.
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/Aromaterapia/ritual-diario3.jpg"
+            alt="Ritual diario de aromaterapia"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
 
-            <section>
-                <h2>Productos Sandra eijach</h2>
-                <img src="img/sandra_eijach/sandra-fijach.jpg" alt="Productos Sandra eijach">
-            </section>
+      <!-- 2) Imagen izq / Texto der -->
+      <section class="feature feature--reverse" id="bienestar" aria-labelledby="sec-bienestar">
+        <div class="feature__content reveal">
+          <h2 id="sec-bienestar">Bienestar</h2>
+          <p>
+            Este espacio está dedicado al cuidado integral del cuerpo y mente. Aquí encontrarás suplementos 
+            naturales, herramientas de relajación, productos para dormir mejor, y todo aquello que respalde 
+            tu estilo de vida saludable. Una invitación a reconectar contigo mismo.
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/Topikids/Topikids.jpg"
+            alt="Productos de bienestar"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
 
-            <div class="parent">
-                <div class="galery"><img src="img/sandra_eijach/sandra-eijach-caramelo-dulce.jpg" alt=""></div>
-                <div class="galery"><img src="img/sandra_eijach/sandra-eijach-floral-dulce.jpg" alt=""></div>
-            </div>
-            <section>
-                <h2>Desodorantes</h2>
-                <div class="parent">
-                    <div class="galery"><img src="img/desodorante-save-the-playa.jpg" alt="desodorante save the playa"></div>
-                    <div class="galery"><img src="img/desodorante-varali.jpg" alt="desodorante varali"></div>
-                </div>
-            </section>
+      <!-- 3) Texto izq / Imagen der -->
+      <section class="feature" id="higiene" aria-labelledby="sec-higiene">
+        <div class="feature__content reveal">
+          <h2 id="sec-higiene">Higiene Bucal</h2>
+          <p>
+            Sonrisas radiantes y saludables comienzan aquí. Nuestra gama de higiene bucal incluye 
+            pastas dentales naturales, enjuagues sin alcohol, cepillos ecológicos y complementos 
+            diseñados para cuidar el esmalte, combatir bacterias y mantener un aliento fresco de forma consciente.
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/sandra_eijach/sandra-fijach.jpg"
+            alt="Productos de higiene bucal"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
 
-            <section>
-                <h2>Otras Categorias</h2>
-                
-                <img src="img/imagen-principal.jpg" alt="imagen principal">
-                <div class="parent">
-                    <div class="galery"><img src="img/about-me-nail-polish.jpg" alt="about me nail polish"></div>
-                    <div class="galery"><img src="img/amarantos-filtro-solar.jpg" alt="amarantos filtro solar"></div>
-                    <div class="galery"><img src="img/body-cream-alivio-para-tus-manos.jpg" alt="body cream alivio para tus manos"></div>
-                    <div class="galery"><img src="img/detergente-en-hojas.jpg" alt="detergente en hojas"></div>
-                    <div class="galery"><img src="img/florcita-antinflamatorio.jpg" alt="florcita antinflamatorio"></div>
-                    <div class="galery"><img src="img/pomada-dolor-arnica-eucalipto.jpg" alt="pomada dolor arnica y eucalipto"></div>
-                    <div class="galery"><img src="img/serum-anti-acne.jpg" alt="serum anti acne"></div>
-                    <div class="galery"><img src="img/serum-capilar.jpg" alt="serum capilar"></div>
-                    <div class="galery"><img src="img/splash-medic-cann.jpg" alt="splash medic cann"></div>
-                    <div class="galery"><img src="img/sunscreen-protector-solar.jpg" alt="sunscreen protector solar"></div>
+      <!-- 4) Imagen izq / Texto der -->
+      <section class="feature feature--reverse" id="facial" aria-labelledby="sec-facial">
+        <div class="feature__content reveal">
+          <h2 id="sec-facial">Facial</h2>
+          <p>
+            Cuida la piel del rostro con fórmulas que nutren y equilibran. Encontrarás 
+            limpiadores suaves, tónicos equilibrantes, serums activos, cremas hidratantes 
+            y mascarillas especiales para distintos tipos de piel. Ideal para una rutina 
+            diaria efectiva y respetuosa.
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/facial/facial.jpg"
+            alt="Cuidado facial natural"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
 
-                </div>
-            </section>
-    </main>
+      <!-- 5) Texto izq / Imagen der -->
+      <section class="feature" id="corporal" aria-labelledby="sec-corporal">
+        <div class="feature__content reveal">
+          <h2 id="sec-corporal">Corporal</h2>
+          <p>
+            Mima tu cuerpo con productos que hidratan, suavizan y revitalizan. Desde aceites 
+            corporales nutritivos, lociones ligeras, exfoliantes hasta mantecas y geles 
+            refrescantes. Diseñados para mejorar textura, elasticidad e integridad de la piel.
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/corporal/corporal.jpg"
+            alt="Cuidado corporal"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
 
-    <footer>
-        TIENDA VIRTUAL BUGAMBILIA 2025 &copy; Todos los derechos reservados<br>
-        <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small><br>
-    </footer>
-    <script src="js/nav.js" defer></script>
+      <!-- 6) Imagen izq / Texto der -->
+      <section class="feature feature--reverse" id="capilar" aria-labelledby="sec-capilar">
+        <div class="feature__content reveal">
+          <h2 id="sec-capilar">Capilar</h2>
+          <p>
+            Para un cabello sano, fuerte y lleno de vitalidad. Esta colección incluye champús suaves, 
+            acondicionadores reparadores, mascarillas nutritivas y tratamientos especializados 
+            (anti-caída, anti-frizz, fortalecimiento). 
+            <strong>Fórmulas respetuosas que restauran brillo y salud capilar.</strong>
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/capilar/capilar.jpg"
+            alt="Cuidado capilar"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
+
+      <!-- 7) Texto izq / Imagen der -->
+      <section class="feature" id="jaboneria" aria-labelledby="sec-jaboneria">
+        <div class="feature__content reveal">
+          <h2 id="sec-jaboneria">Jabonería</h2>
+          <p>
+            Artesanales, delicados y llenos de carácter. Nuestros jabones están elaborados con 
+            ingredientes naturales, glicerina vegetal, aceites nutricios y fragancias suaves. 
+            Disponibles en barras o líquidas, para cuerpo, manos y rostro, cada una con su esencia particular.
+          </p>
+        </div>
+        <figure class="feature__media reveal">
+          <img
+            src="img/jabones/jabones.jpg"
+            alt="Jabones artesanales"
+            loading="lazy"
+            decoding="async"
+            width="1600" height="1066">
+        </figure>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    TIENDA VIRTUAL BUGAMBILIA 2025 &copy; Todos los derechos reservados<br />
+    <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small><br />
+  </footer>
+
+  <!-- JS Bootstrap -->
+  <script type="module" src="js/main.js"></script>
+  
 </body>
 </html>

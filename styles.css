@@ -1,23 +1,80 @@
-/* Reset nav básico */
+/* ===================== BASE / RESET ===================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #222;
+  background: #f5faf7; /* tono suave para contraste */
+  line-height: 1.5;
+}
+
+/* Accesibilidad */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px,1px,1px,1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+/* Enlaces (LVHA) */
+a:link    { color: #059cf3; }
+a:visited { color: blueviolet; }
+a:hover   { color: #0b6bb8; }
+a:active  { color: #0a8f3a; }
+
+/* Imágenes responsivas por defecto */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===================== CONTENEDOR FLUIDO ===================== */
+.wrap {
+  width: min(1200px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* ===================== HEADER / NAV ===================== */
 .site-header {
-  background: #ffffff;
-  text-align: center;
-  padding: 1.5rem 1rem 0.5rem;
+  position: sticky; /* cambia a 'static' si no quieres sticky */
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.site-header .wrap {
+  display: grid;
+  gap: .5rem;
+  align-items: center;
+  padding-block: .75rem;
+}
+
+@media (min-width: 900px) {
+  .site-header .wrap { grid-template-columns: 1fr auto; }
 }
 
 .brand {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  margin: 0;
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
   font-weight: 700;
+  letter-spacing: .3px;
+  text-align: center;
 }
 
-/* Contenedor nav */
-.site-nav {
-  position: relative;
-  margin-bottom: 1rem;
+.site-nav { 
+  position: relative; 
+  text-align: center; 
 }
 
-/* Botón hamburguesa (móvil) */
 .nav-toggle {
   display: none;
   position: absolute;
@@ -39,7 +96,6 @@
   border-radius: 2px;
 }
 
-/* Lista de enlaces */
 .menu {
   list-style: none;
   display: inline-flex;
@@ -52,11 +108,11 @@
 }
 
 .menu li a {
-  color: #222;
+  color: #03c1e2;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.35rem 0.25rem;
+  font-size: 1.05rem;
+  padding: 0.35rem 0.5rem;
   border-radius: 6px;
   transition: color .2s ease, background-color .2s ease;
 }
@@ -72,117 +128,12 @@
   background: #e8f8ef;
 }
 
-/* Hero */
-.hero-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: .5rem;
-  margin-top: 1rem;
-}
-
-/* Accesibilidad */
-.sr-only {
-  position: absolute !important;
-  height: 1px; width: 1px;
-  overflow: hidden; clip: rect(1px,1px,1px,1px);
-  white-space: nowrap; border: 0; padding: 0; margin: -1px;
-}
-
-.menu {
-  list-style: none;
-  padding: 0;
-  display: inline-flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* “Hero” opcional para destacadas */
-.hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: .5rem;
-}
-
-/* Grid responsive */
-.grid {
-  --min: 200px;                     /* tamaño mínimo de cada tile */
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
-}
-
-.tile img {
-  width: 100%;
-  aspect-ratio: 1 / 1;              /* cuadrado consistente */
-  object-fit: cover;                 /* usa 'contain' si NO quieres recorte */
-  border-radius: .5rem;
-  display: block;
-  background: #f6f6f6;              /* útil si usas contain para el “marco” */
-}
-
-body {
-    display: grid;
-    height: 150vh;
-    grid-template-rows: auto 1fr auto;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    margin: 0;
-    padding: 0 1rem;
-}
-
-div {
-    text-align: center;
-    padding: 1em;
-    font-size: 1.2em;
-    color: #059cf3c5;
-}
-
-header{
-    background-color: #ffffff;
-    text-align: center;
-    padding: 2em;
-}
-
-footer {
-    text-align: center;
-    padding: 2em;
-    color: #ffffff;
-    background-color: #5a5757f8;
-}
-
-main {
-    background-color: #07bd2e8c;
-    text-align: center;
-    padding: 2em;
-}
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.galery{
-    display: grid;
-    justify-items: center;
-}
-
-.galery img {
-    display: block;
-    width: 200px;
-    height: 200px;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-/* ————— Responsive ————— */
+/* Móvil: menú colapsado */
 @media (max-width: 600px) {
-  /* Mostrar hamburguesa y colapsar menú */
   .nav-toggle { display: block; }
 
   .menu {
-    display: none;                 /* oculto por defecto en móvil */
+    display: none;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.75rem 0;
@@ -191,11 +142,141 @@ main {
     background: #fff;
     margin-top: 2.5rem;
   }
+  .menu.is-open { display: flex; }
 
-  .menu.is-open { display: flex; } /* se activa con JS */
+  .menu li a { display: block; padding: 0.6rem 0.75rem; }
+}
 
-  .menu li a {
-    display: block;
-    padding: 0.6rem 0.75rem;
+/* ===================== HERO RESPONSIVO ===================== */
+.hero {
+  width: 100%;
+  padding-inline: 1rem;
+  margin-inline: auto;
+  margin-block: 0.5rem 1rem;
+  /* El contenedor define proporción para que la img pueda usar height:100% */
+  aspect-ratio: 16 / 7;           /* ajústalo a 16/9 si prefieres */
+  border-radius: .75rem;
+  overflow: hidden;
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* recorte elegante sin deformar */
+  border-radius: inherit;          /* mantiene el radio del contenedor */
+}
+
+/* En móviles, un poco más alto para mostrar más imagen */
+@media (max-width: 600px) {
+  .hero { aspect-ratio: 16 / 10; }
+}
+
+/* ===================== MAIN / SECCIONES ===================== */
+.site-main { padding-block: 0 2rem; }
+
+/* ===== BLOQUES 40/60 con Grid Areas (FIX alternado) ===== */
+.feature {
+  display: grid;
+  grid-template-columns: 40% 60%;           /* texto / imagen */
+  grid-template-areas: "content media";     /* posiciones */
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: stretch;
+  margin: clamp(1.25rem, 3vw, 2.5rem) 0;
+}
+
+/* Alterna: Imagen/Texto (60/40) invirtiendo ÁREAS */
+.feature.feature--reverse {
+  grid-template-columns: 60% 40%;           /* imagen / texto */
+  grid-template-areas: "media content";     /* inversión real de posiciones */
+}
+
+/* Asignación de áreas a los hijos */
+.feature__content { 
+  grid-area: content; 
+  background: #ffffff;            /* fondo blanco como pediste */
+  border-radius: 12px;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: grid;
+  align-content: start;
+  gap: .75rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+.feature__content h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  color: #0b6bb8;
+}
+.feature__content p { margin: 0; color: #2b2b2b; }
+
+.feature__media {
+  grid-area: media;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  overflow: hidden;               /* oculta el recorte del cover */
+  background: #f6f6f6;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  aspect-ratio: 16 / 9;           /* altura visual consistente para todas las secciones */
+}
+
+.feature__media img {
+  width: 100%;
+  height: 100%;                   /* ahora sí, porque el contenedor tiene altura */
+  object-fit: cover;              /* rellena sin deformar */
+  display: block;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.feature__media img:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 26px rgba(0,0,0,.12);
+}
+
+/* Apilado en pantallas pequeñas (conserva orden: texto arriba, imagen abajo) */
+@media (max-width: 900px) {
+  .feature,
+  .feature.feature--reverse {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "media";
   }
+}
+
+/* ===================== REVEAL ON SCROLL ===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .feature__media img { transition: none !important; }
+}
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #ffffff;
+  background-color: #5a5757f8;
+}
+
+/* ===================== COMPATIBILIDAD / LEGADO ===================== */
+/* Si en tu CSS anterior había reglas que fijaban tamaño de imágenes,
+   estas líneas las neutralizan para mantener responsividad. */
+.galery img,
+.gallery img,
+.section-intro img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover;
+  border-radius: 8px;
+  /* Si de verdad quieres cuadradas en una galería, descomenta la siguiente línea:
+     aspect-ratio: 1 / 1; */
 }
