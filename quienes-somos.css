@@ -22,6 +22,7 @@ html { font-size: clamp(16px, 1.5vw, 22px); }
 h1 { font-size: clamp(2rem, 3vw, 3rem); }
 h2 { font-size: clamp(1.5rem, 2.5vw, 2.25rem); }
 p  { text-align: justify; font-size: clamp(1rem, 1.2vw, 1.2rem); }
+li{text-align: justify;}
 
 body{
   min-height: 100dvh;
@@ -450,6 +451,171 @@ img{
   height: auto !important;
   object-fit: cover;
   border-radius: 8px;
+}
+
+/* =========================================================
+   MAIN / CONTENIDO (encabezados + FAQ <details>/<summary>)
+   ========================================================= */
+
+/* ---------- Encabezados de secciones ---------- */
+/* Usa el mismo azul celeste del nav (rgb(3,193,226)) */
+.site-main h2,
+.feature__content h2{
+  color: rgb(3, 193, 226);
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.2;
+  /* subrayado sutil con el celeste */
+  position: relative;
+  padding-bottom: .35rem;
+}
+.site-main h2::after,
+.feature__content h2::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 72px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgb(3, 193, 226);
+  opacity: .9;
+}
+
+/* Espaciado entre bloques de texto para mejor lectura */
+.feature__content p + p,
+.feature__content ul{ 
+  margin-top: .5rem;
+}
+
+/* ---------- FAQ / Acordeones accesibles ---------- */
+/* Contenedor del details mantiene la tarjeta y no rompe el grid */
+.feature__content details{
+  border: 1px solid rgba(3,193,226,.25);
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.04);
+  overflow: hidden;                 /* mantiene la figura del bloque */
+}
+
+/* Separación entre varios acordeones seguidos */
+.feature__content details + details{
+  margin-top: .75rem;
+}
+
+/* Encabezado clicable del acordeón */
+.feature__content summary{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  cursor: pointer;
+  padding: .85rem 1rem;
+  font-weight: 600;
+  color: rgb(3, 193, 226);          /* mismo celeste del nav */
+  list-style: none;                  /* oculta el marker nativo */
+  outline: none;
+  position: relative;
+  background: rgba(3,193,226,.06);
+  transition: background-color .2s ease, color .2s ease;
+}
+
+/* Quita triángulo por compatibilidad extra */
+.feature__content summary::-webkit-details-marker{ display: none; }
+
+/* Indicador (caret) dibujado con CSS */
+.feature__content summary::after{
+  content: "";
+  margin-left: auto;
+  width: 10px; height: 10px;
+  border-right: 2px solid rgb(3, 193, 226);
+  border-bottom: 2px solid rgb(3, 193, 226);
+  transform: rotate(-45deg);        /* flecha hacia la derecha/abajo */
+  transition: transform .2s ease;
+}
+
+/* Hover / focus: más contraste y anillo accesible */
+.feature__content summary:hover{
+  background: rgba(3,193,226,.10);
+}
+.feature__content summary:focus-visible{
+  outline: 2px solid rgb(3, 193, 226);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Estado abierto: separador y caret rotado */
+.feature__content details[open] summary{
+  background: rgba(3,193,226,.12);
+  border-bottom: 1px solid rgba(3,193,226,.20);
+}
+.feature__content details[open] summary::after{
+  transform: rotate(45deg);         /* indica desplegado */
+}
+
+/* Cuerpo del acordeón */
+.feature__content details > *:not(summary){
+  padding: .85rem 1rem 1rem 1rem;
+  color: rgb(43, 43, 43);
+}
+
+/* Listas dentro del cuerpo del acordeón */
+.feature__content details p + ul{
+  margin-top: .5rem;
+}
+
+/* Reduce movimiento si el usuario lo pide */
+@media (prefers-reduced-motion: reduce){
+  .feature__content summary::after{ transition: none !important; }
+}
+
+/* =========================================================
+   FIX FAQ EN ESCRITORIO (evitar que la imagen se monte
+   sobre <summary>/<details> cuando el contenido crece)
+   ========================================================= */
+
+/* 1) En desktop alineamos arriba y damos prioridad visual al texto */
+@media (min-width: 900px){
+  .feature{
+    align-items: start;                 /* cada columna crece a su bola */
+  }
+  .feature__content{
+    position: relative;
+    z-index: 2;                         /* el contenido queda por encima */
+  }
+  .feature__media{
+    position: relative;
+    z-index: 1;
+    align-self: start;                  /* la figura queda pegada arriba */
+  }
+}
+
+/* 2) Cuando el contenido crece, la tarjeta de imagen no debe “flotar”.
+      Quitamos el aspect-ratio rígido en pantallas grandes para que
+      pueda adaptarse a la altura disponible sin solapar. */
+@media (min-width: 1200px){
+  .feature__media{
+    aspect-ratio: auto;                 /* desbloquea la altura */
+    min-height: 300px;                  /* base visual agradable */
+  }
+  .feature__media img{
+    width: 100%;
+    height: 100%;                       /* ocupa su contenedor */
+    object-fit: cover;                   /* recorte elegante */
+  }
+}
+
+/* 3) Asegura que los <details> se “sientan” por encima si se acercan
+      visualmente a la figura (defensa extra de stacking). */
+.feature__content details{
+  position: relative;                   /* crea contexto propio */
+  z-index: 3;                           /* sobre figura y sombras */
+}
+
+/* 4) Si usas la variante invertida (.feature--reverse), aplica lo mismo */
+@media (min-width: 900px){
+  .feature.feature--reverse{
+    align-items: start;
+  }
 }
 
 /* =========================================================
