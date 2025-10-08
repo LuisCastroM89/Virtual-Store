@@ -1,33 +1,51 @@
 export default function initNav() {
-  const toggle = document.querySelector('.nav-toggle');
-  const menu = document.getElementById('menu');
-  if (!toggle || !menu) return;
+    const header = document.querySelector('.site-header');
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
 
-  if (!toggle.hasAttribute('type')) toggle.setAttribute('type', 'button');
+    if (!toggle || !menu || !header) {
+      console.warn('[nav] Falta .site-header, .nav-toggle o #menu');
+      return;
+    }
 
-  const close = () => {
-    menu.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  };
+    // Asegura type=button
+    if (!toggle.hasAttribute('type')) toggle.setAttribute('type', 'button');
 
-  toggle.addEventListener('click', (e) => {
-    const open = menu.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    e.stopPropagation();
-  });
+    // Toggle open/close
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
 
-  // Cerrar al hacer click en un enlace del menú
-  menu.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') close();
-  });
+    // Cierra con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
 
-  // Cerrar al hacer click fuera
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !toggle.contains(e.target)) close();
-  });
+    // Cierra clicando fuera
+    document.addEventListener('click', (e) => {
+      const clickedInside = e.target.closest('.site-nav');
+      if (!clickedInside && menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
 
-  // Evitar menú abierto al redimensionar
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 600) close();
-  });
-}
+    // Sombra al hacer scroll
+    const onScroll = () => {
+      if (window.scrollY > 4) header.classList.add('has-shadow');
+      else header.classList.remove('has-shadow');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNav);
+  } else {
+    initNav();
+  }
