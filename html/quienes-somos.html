@@ -2,37 +2,96 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primario -->
+  <title>Bugambilia | Belleza consciente · Productos orgánicos, bienestar y cuidado personal</title>
+  <meta name="description" content="Bugambilia: tienda de belleza consciente. Aromaterapia, bienestar, higiene bucal, facial, corporal, capilar y jabonería con ingredientes naturales." />
   <meta name="author" content="Tienda Virtual Bugambilia" />
-  <meta name="language" content="Spanish" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  <link rel="canonical" href="https://www.bugambilia.com/" />
+
+  <!-- Idioma / Indexación -->
+  <meta name="language" content="es" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="alternate" hreflang="es" href="https://www.bugambilia.com/" />
 
   <!-- Open Graph -->
-  <meta property="og:description" content="Venta de Productos Orgánicos: cremas, jabones, protector solar, aromaterapia y más." />
-  <meta property="og:title" content="Venta de Productos Orgánicos - Bugambilia" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.bugambilia.com" />
-  <meta property="og:image" content="img/LOGO ASECOMTRI.png" />
   <meta property="og:site_name" content="Bugambilia" />
   <meta property="og:locale" content="es_CO" />
+  <meta property="og:title" content="Bugambilia | Belleza consciente" />
+  <meta property="og:description" content="Productos orgánicos: aromaterapia, facial, corporal, capilar y más." />
+  <meta property="og:url" content="https://www.bugambilia.com/" />
+  <meta property="og:image" content="https://www.bugambilia.com/img/LOGO-OG-1200x630.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-  <!-- X (Twitter) -->
+  <!-- X/Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Tienda Virtual Bugambilia" />
-  <meta name="twitter:description" content="Productos orgánicos y bienestar." />
-  <meta name="twitter:image" content="img/LOGO ASECOMTRI.png" />
+  <meta name="twitter:title" content="Bugambilia | Belleza consciente" />
+  <meta name="twitter:description" content="Belleza consciente con productos naturales y sostenibles." />
+  <meta name="twitter:image" content="https://www.bugambilia.com/img/LOGO-OG-1200x630.png" />
 
-  <link rel="canonical" href="https://www.bugambilia.com/" />
-  <link rel="icon" href="img/bugambilia-favicon.ico" />
-  <link rel="apple-touch-icon" href="img/bugambilia-180.png" />
+  <!-- Iconos -->
+  <link rel="icon" href="../img/bugambilia-favicon.ico" />
+  <link rel="apple-touch-icon" href="../img/bugambilia-180.png" sizes="180x180" />
 
-  <link rel="stylesheet" href="../styles.css?v=2">
-  <title>Bugambilia</title>
+  <!-- Fuentes (carga rápida) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../principal.css?v=3" />
+
+  <!-- Datos estructurados: Organization + WebSite (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Bugambilia",
+    "url":"https://www.bugambilia.com/",
+    "logo":"https://www.bugambilia.com/img/bugambilia-180.png",
+    "sameAs":[
+      "https://www.instagram.com/buga_bellezaconsciente",
+      "https://www.facebook.com/",
+      "https://www.tiktok.com/@ecotienda.buga"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://www.bugambilia.com/",
+    "name":"Bugambilia",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://www.bugambilia.com/buscar?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- HEADER -->
   <header class="site-header">
     <div class="wrap">
-      <h1 class="brand">Bugambilia</h1><br>
+      <h1 class="brand sr-only">BUGAMBILIA</h1><br>
+          <!-- BRAND HERO (marca tipográfica animada, SEO-friendly) -->
+      <section class="brand-hero" role="banner" aria-label="Marca Bugambilia">
+        <div class="brand-hero__bg" aria-hidden="true"></div>
+
+        <div class="brand-hero__content">
+          <!-- Palabra de marca -->
+          <div class="wordmark">
+            <span class="wordmark__text" aria-label="Bugambilia">BUGAMBILIA</span>
+          </div>
+          <!-- Eslogan (usa el texto tal como lo mostraste en la imagen) -->
+          <p class="tagline">Belleza consiente</p>
+        </div>
+      </section>
 
       <nav class="site-nav" aria-label="Menú principal">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
@@ -43,29 +102,16 @@
         </button>
 
         <ul id="menu" class="menu">
-          <li><a href="principal.html" aria-current="page">Inicio</a></li>
-          <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
-          <li><a href="tienda.html">Tienda Virtual</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="foro.html">Espacios de conexión</a></li>
+          <li><a href="../html/principal.html" aria-current="page">Inicio</a></li>
+          <li><a href="../html/quienes-somos.html">¿Quiénes somos?</a></li>
+          <li><a href="../html/tienda.html">Tienda Virtual</a></li>
+          <li><a href="../html/corporativo.html">Corporativo</a></li>
+          <li><a href="../html/blog.html">Blog</a></li>
+          <li><a href="../html/trabaja-con-nosotros.html">Trabaja Con Nosotros</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <!-- HERO (fuera del header) -->
-  <section class="hero" role="banner" aria-label="Portada">
-    <picture>
-      <!-- Puedes añadir sources webp si las tienes -->
-      <img
-        class="hero__img"
-        src="img/imagen-pagina-principal.jpg"
-        alt="Fotografía de portada de la tienda Bugambilia"
-        loading="eager"
-        decoding="async"
-        width="2400" height="1200">
-    </picture>
-  </section>
 
   <!-- MAIN -->
   <main class="site-main">
@@ -74,16 +120,15 @@
       <!-- 1) Texto izq / Imagen der -->
       <section class="feature" id="aromaterapia" aria-labelledby="sec-aromaterapia">
         <div class="feature__content reveal">
-          <h2 id="sec-aromaterapia">Aromaterapia</h2>
-          <p>
-            Sumérgete en una atmósfera de paz y renovación. Nuestra línea de aromaterapia combina aceites esenciales 
-            puros y sinérgicos, difusores elegantes y velas aromáticas para transformar tus espacios en santuarios 
-            sensoriales. Perfecto para meditar, relajarte al final del día o aportar equilibrio emocional.
+          <h2 id="sec-aromaterapia">Bugambilia</h2>
+          <p>En Bugambilia creemos que la verdadera belleza nace del cuidado amoroso hacia ti y hacia la 
+            naturaleza. Somos un espacio donde la sostenibilidad, el bienestar y la cosmética natural se 
+            unen para inspirarte a vivir más ligero, más auténtico y más conectado con lo esencial.
           </p>
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/Aromaterapia/ritual-diario3.jpg"
+            src="../img/aromaterapia1.jpg"
             alt="Ritual diario de aromaterapia"
             loading="lazy"
             decoding="async"
@@ -103,7 +148,7 @@
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/Topikids/Topikids.jpg"
+            src="../img/bienestar.jpg"
             alt="Productos de bienestar"
             loading="lazy"
             decoding="async"
@@ -123,7 +168,7 @@
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/sandra_eijach/sandra-fijach.jpg"
+            src="../img/pasta-dental.jpg"
             alt="Productos de higiene bucal"
             loading="lazy"
             decoding="async"
@@ -144,7 +189,7 @@
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/facial/facial.jpg"
+            src="../img/kit-afeitada.jpg"
             alt="Cuidado facial natural"
             loading="lazy"
             decoding="async"
@@ -164,7 +209,7 @@
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/corporal/corporal.jpg"
+            src="../img/corporal.jpg"
             alt="Cuidado corporal"
             loading="lazy"
             decoding="async"
@@ -185,7 +230,7 @@
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/capilar/capilar.jpg"
+            src="../img/capilar.jpg"
             alt="Cuidado capilar"
             loading="lazy"
             decoding="async"
@@ -205,7 +250,7 @@
         </div>
         <figure class="feature__media reveal">
           <img
-            src="img/jabones/jabones.jpg"
+            src="../img/jabones.jpg"
             alt="Jabones artesanales"
             loading="lazy"
             decoding="async"
@@ -222,7 +267,7 @@
     <a class="footer-brand" href="principal.html" aria-label="Inicio Bugambilia">
       <img
         class="footer-logo"
-        src="../img/LOGO ASECOMTRI.png"
+        src="../img/bugambilia-180.png"
         alt="Logo Bugambilia"
         width="48" height="48" loading="lazy" decoding="async">
       <span class="footer-name">Bugambilia</span>
@@ -230,21 +275,31 @@
 
     <!-- Copy -->
     <div class="footer-copy">
-      <span>TIENDA VIRTUAL BUGAMBILIA &copy; 2025</span>
+      <span>BUGAMBILIA &copy; 2025</span>
       <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small>
     </div>
 
     <!-- Redes -->
     <nav class="footer-social" aria-label="Redes sociales">
       <ul>
+         <li>
+          <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <!-- WhatsApp -->
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
+              <path fill="currentColor" d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.18 1.59 6.01L0 24l6.15-1.59A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52ZM12 22a9.93 9.93 0 0 1-5.06-1.38l-.36-.22-3.64.94.97-3.55-.23-.37A9.96 9.96 0 1 1 22 12 9.98 9.98 0 0 1 12 22Zm5.78-7.41c-.31-.15-1.83-.9-2.12-1-.29-.11-.5-.15-.72.15-.21.29-.83 1-.1 1.22.25.09.51.38.58.53.13.26.06.48-.03.67-.09.19-.48.58-.67.67-.19.09-.42.13-.67.03-.24-.09-.53-.24-.88-.47-1.53-.97-2.53-2.55-2.72-2.98-.19-.42-.2-.77-.17-1.06.03-.29.33-.53.43-.72.1-.19.19-.38.29-.58.09-.19.05-.43-.03-.6-.09-.19-.72-1.72-.99-2.35-.26-.63-.54-.55-.72-.55-.19 0-.41-.03-.64-.03s-.6.09-.91.43c-.31.34-1.2 1.17-1.2 2.85 0 1.68 1.23 3.3 1.4 3.53.17.22 2.41 3.67 5.84 5 .82.35 1.46.56 1.96.71.82.26 1.57.22 2.15.13.66-.1 2.01-.82 2.29-1.61.29-.79.29-1.46.2-1.61-.09-.15-.34-.24-.67-.39Z"/>
+            </svg>
+          </a>
+        </li>
+
         <li>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <a href="https://www.instagram.com/buga_bellezaconsciente?igsh=ZTc5bHM2MzRnMDlv" target="_blank" rel="noopener" aria-label="Instagram">
             <!-- Instagram -->
             <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
               <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.427.403a4.9 4.9 0 0 1 1.772 1.153 4.9 4.9 0 0 1 1.153 1.772c.163.457.349 1.257.403 2.427.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.427a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.457.163-1.257.349-2.427.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.427-.403a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.163-.457-.349-1.257-.403-2.427C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.427a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.561 1.76c.457-.163 1.257-.349 2.427-.403C9.254 1.299 9.634 1.287 12 1.287m0 2.176c-3.16 0-3.532.012-4.777.069-.98.045-1.51.208-1.863.346-.47.182-.806.4-1.16.755-.355.354-.573.69-.755 1.16-.138.353-.301.883-.346 1.863-.057 1.245-.069 1.617-.069 4.777s.012 3.532.069 4.777c.045.98.208 1.51.346 1.863.182.47.4.806.755 1.16.354.355.69.573 1.16.755.353.138.883.301 1.863.346 1.245.057 1.617.069 4.777.069s3.532-.012 4.777-.069c.98-.045 1.51-.208 1.863-.346.47-.182.806-.4 1.16-.755.355-.354.573-.69.755-1.16.138-.353.301-.883.346-1.863.057-1.245.069-1.617.069-4.777s-.012-3.532-.069-4.777c-.045-.98-.208-1.51-.346-1.863a3.076 3.076 0 0 0-.755-1.16 3.076 3.076 0 0 0-1.16-.755c-.353-.138-.883-.301-1.863-.346-1.245-.057-1.617-.069-4.777-.069Zm0 3.514a6.323 6.323 0 1 1 0 12.646 6.323 6.323 0 0 1 0-12.646Zm0 2.176a4.147 4.147 0 1 0 0 8.294 4.147 4.147 0 0 0 0-8.294Zm6.406-2.955a1.477 1.477 0 1 1 0 2.954 1.477 1.477 0 0 1 0-2.954Z"/>
             </svg>
           </a>
         </li>
+
         <li>
           <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
             <!-- Facebook -->
@@ -253,11 +308,12 @@
             </svg>
           </a>
         </li>
+        
         <li>
-          <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <!-- WhatsApp -->
+          <a href="https://www.tiktok.com/@ecotienda.buga?_t=ZS-90KlV4bvNkv&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <!-- TikTok -->
             <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
-              <path fill="currentColor" d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.18 1.59 6.01L0 24l6.15-1.59A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52ZM12 22a9.93 9.93 0 0 1-5.06-1.38l-.36-.22-3.64.94.97-3.55-.23-.37A9.96 9.96 0 1 1 22 12 9.98 9.98 0 0 1 12 22Zm5.78-7.41c-.31-.15-1.83-.9-2.12-1-.29-.11-.5-.15-.72.15-.21.29-.83 1-.1 1.22.25.09.51.38.58.53.13.26.06.48-.03.67-.09.19-.48.58-.67.67-.19.09-.42.13-.67.03-.24-.09-.53-.24-.88-.47-1.53-.97-2.53-2.55-2.72-2.98-.19-.42-.2-.77-.17-1.06.03-.29.33-.53.43-.72.1-.19.19-.38.29-.58.09-.19.05-.43-.03-.6-.09-.19-.72-1.72-.99-2.35-.26-.63-.54-.55-.72-.55-.19 0-.41-.03-.64-.03s-.6.09-.91.43c-.31.34-1.2 1.17-1.2 2.85 0 1.68 1.23 3.3 1.4 3.53.17.22 2.41 3.67 5.84 5 .82.35 1.46.56 1.96.71.82.26 1.57.22 2.15.13.66-.1 2.01-.82 2.29-1.61.29-.79.29-1.46.2-1.61-.09-.15-.34-.24-.67-.39Z"/>
+              <path fill="currentColor" d="M12.55 2h3.3c.1.63.34 1.25.69 1.8.48.78 1.16 1.46 1.94 1.94.55.35 1.17.6 1.8.69v3.33c-.93-.03-1.86-.19-2.74-.49-.53-.18-1.05-.42-1.55-.7v7.96c0 1.82-.75 3.59-2.08 4.86a6.877 6.877 0 0 1-4.95 2.01 6.928 6.928 0 0 1-4.93-2.01A6.875 6.875 0 0 1 2 15.99c0-1.83.74-3.58 2.06-4.87a6.926 6.926 0 0 1 4.93-2.01c.32 0 .65.02.97.06v3.39a3.95 3.95 0 0 0-.97-.13 3.583 3.583 0 0 0-3.57 3.56c0 .95.37 1.84 1.03 2.51a3.557 3.557 0 0 0 2.54 1.05c.95 0 1.85-.38 2.52-1.05a3.557 3.557 0 0 0 1.05-2.51V2z"/>
             </svg>
           </a>
         </li>
@@ -267,7 +323,7 @@
 </footer>
 
   <!-- JS Bootstrap -->
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="../js/main.js"></script>
   
 </body>
 </html>
