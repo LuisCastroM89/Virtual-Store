@@ -1,107 +1,129 @@
-/* =========================================================
-   NAV, HEADER & REVEAL — Bugambilia
-   ========================================================= */
+// main.js — Bugambilia
+// Control de navegación responsive accesible (sin dependencias ni inline scripts).
+// - Maneja abrir/cerrar menú en móvil
+// - Actualiza aria-expanded para accesibilidad
+// - Cierra con ESC, clic fuera y al seleccionar un enlace
+// - Mantiene estado consistente en resize
 
-document.addEventListener('DOMContentLoaded', () => {
-  /* ---------- Helpers ---------- */
-  const qs  = (sel, ctx = document) => ctx.querySelector(sel);
-  const qsa = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+(() => {
+  'use strict';
 
-  /* ---------- Elementos del header / nav ---------- */
-  const header      = qs('.site-header');
-  const navToggle   = qs('.nav-toggle');
-  const menu        = qs('#menu');
-  const toggleLabel = navToggle ? qs('.nav-toggle-label', navToggle) : null;
+  // ---- Helpers de selección ----
+  const q = (s, c = document) => c.querySelector(s);
+  const qa = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-  /* ========= Menú móvil ========= */
+  // ---- Referencias de la navegación ----
+  const nav = q('.site-nav');                     // Contenedor <nav>
+  const btn = q('.nav-toggle', nav || undefined); // Botón de toggle (hamburguesa)
+  const menu = q('#menu', nav || undefined);      // Lista <ul id="menu">
+
+  // Si no existe alguno, salimos sin hacer nada (página no tiene nav)
+  if (!nav || !btn || !menu) return;
+
+  // ---- Estado inicial ARIA (consistente) ----
+  nav.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-expanded', 'false');
+  menu.classList.remove('is-open');
+
+  let lastFocus = null; // Para devolver el foco al botón al cerrar
+
+  // ---- Consulta de breakpoint (coincide con CSS) ----
+  const isMobile = () => window.matchMedia('(max-width: 880px)').matches;
+
+  // Enfocar el primer link del menú al abrir (mejora accesibilidad con teclado)
+  const focusFirstLink = () => {
+    const first = q('a, button', menu);
+    if (first) first.focus({ preventScroll: true });
+  };
+
+  // ---- Acciones de abrir/cerrar ----
   const openMenu = () => {
-    if (!menu || !navToggle) return;
+    if (!isMobile()) return; // En desktop no es "menu modal"
+    lastFocus = document.activeElement;
+    nav.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-expanded', 'true');
     menu.classList.add('is-open');
-    navToggle.setAttribute('aria-expanded', 'true');
-    if (toggleLabel) toggleLabel.textContent = 'Cerrar';
-    const firstLink = qs('a', menu);
-    if (firstLink) firstLink.focus({ preventScroll: true });
-    document.addEventListener('click', outsideClickHandler);
-    document.addEventListener('keydown', escHandler);
+    // NOTE: Si quisieras bloquear scroll del body en móvil, descomenta:
+    // document.documentElement.style.overflow = 'hidden';
+    setTimeout(focusFirstLink, 0);
   };
 
   const closeMenu = () => {
-    if (!menu || !navToggle) return;
+    nav.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-expanded', 'false');
     menu.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    if (toggleLabel) toggleLabel.textContent = 'Menú';
-    document.removeEventListener('click', outsideClickHandler);
-    document.removeEventListener('keydown', escHandler);
+    // document.documentElement.style.overflow = '';
+    // Devuelve el foco al botón para no perder el contexto del teclado
+    if (lastFocus && document.contains(lastFocus)) {
+      btn.focus({ preventScroll: true });
+    }
   };
 
   const toggleMenu = () => {
-    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeMenu() : openMenu();
+    const expanded = nav.getAttribute('aria-expanded') === 'true';
+    expanded ? closeMenu() : openMenu();
   };
 
-  const outsideClickHandler = (e) => {
-    if (!menu || !navToggle) return;
-    const clickInsideToggle = navToggle.contains(e.target);
-    const clickInsideMenu   = menu.contains(e.target);
-    if (!clickInsideToggle && !clickInsideMenu) closeMenu();
-  };
+  // ---- Eventos principales ----
 
-  const escHandler = (e) => {
-    if (e.key === 'Escape') closeMenu();
-  };
+  // Click en el botón
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleMenu();
+  });
 
-  if (navToggle && menu) {
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.addEventListener('click', (e) => {
+  // Cerrar al hacer click fuera del contenedor nav (solo en móvil)
+  document.addEventListener('click', (e) => {
+    if (!isMobile()) return;
+    const expanded = nav.getAttribute('aria-expanded') === 'true';
+    if (!expanded) return;
+    const withinNav = nav.contains(e.target);
+    if (!withinNav) closeMenu();
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const expanded = nav.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
       e.preventDefault();
-      toggleMenu();
-    });
-
-    menu.addEventListener('click', (e) => {
-      const link = e.target.closest('a');
-      if (link) closeMenu();
-    });
-
-    let resizeRAF;
-    window.addEventListener('resize', () => {
-      cancelAnimationFrame(resizeRAF);
-      resizeRAF = requestAnimationFrame(() => {
-        if (window.innerWidth > 600) closeMenu();
-      });
-    });
-  }
-
-  /* ========= Sombra del header al hacer scroll ========= */
-  const onScroll = () => {
-    if (!header) return;
-    header.classList.toggle('has-shadow', window.scrollY > 8);
-  };
-
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        onScroll();
-        ticking = false;
-      });
-      ticking = true;
+      closeMenu();
     }
   });
-  onScroll();
 
-  /* ========= Reveal on scroll (opcional) ========= */
-  const revealItems = qsa('.reveal');
-  if ('IntersectionObserver' in window && revealItems.length) {
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-    revealItems.forEach(el => io.observe(el));
-  } else {
-    revealItems.forEach(el => el.classList.add('in-view'));
+  // Cerrar al seleccionar un enlace (solo móvil)
+  menu.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    if (isMobile()) closeMenu();
+  });
+
+  // En resize, normalizamos estado ARIA cuando pasamos a desktop
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!isMobile()) {
+        nav.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+        // document.documentElement.style.overflow = '';
+      }
+    }, 120);
+  });
+})();
+
+// --- Footer: año dinámico en #year ---
+// Funciona con CSP porque está en archivo externo.
+// Se ejecuta tanto si el DOM ya cargó como si no.
+(function initFooterYear(){
+  function setYear() {
+    const el = document.getElementById('year');
+    if (el) el.textContent = new Date().getFullYear();
   }
-});
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setYear, { once: true });
+  } else {
+    setYear();
+  }
+})();

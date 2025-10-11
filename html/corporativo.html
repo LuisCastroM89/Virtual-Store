@@ -4,6 +4,36 @@
 <link rel="stylesheet" href="../principal.css">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests;">
 </head>
+
+<!-- ====== Botones flotantes: WhatsApp + Trabaja con Nosotros (vertical) ====== -->
+<nav class="fab" aria-label="Acciones rápidas">
+  <!-- Botón WhatsApp (fondo blanco, icono fucsia grande) -->
+  <a class="fab__btn fab__btn--wa" 
+     href="https://wa.me/573052816294" 
+     target="_blank" rel="noopener" 
+     aria-label="Abrir WhatsApp de Bugambilia">
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
+    </svg>
+  </a>
+
+  <!-- Botón Trabaja con Nosotros (vertical con texto rotado 90° y centrado) -->
+  <a class="fab__btn fab__btn--jobs-vertical" 
+     href="trabaja-con-nosotros.html"
+     aria-label="Trabaja con nosotros">
+    <svg class="fab__icon-briefcase" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M9 3a2 2 0 00-2 2v1H5a2 2 0 00-2 2v3h18V8a2 2 0 00-2-2h-2V5a2 2 0 00-2-2H9zm6 3V5a1 1 0 00-1-1h-4a1 1 0 00-1 1v1h6zM3 12v6a2 2 0 002 2h14a2 2 0 002-2v-6h-6v1a1 1 0 01-1 1h-4a1 1 0 01-1-1v-1H3zm8 1h2v1h-2v-1z"/>
+    </svg>
+    <span class="fab__label fab__label--vertical">
+      <!-- Wrap centrado absoluto -->
+      <span class="flip-wrap">
+        <span class="flip-rot">¡Trabaja con nosotros!</span>
+      </span>
+    </span>
+  </a>
+</nav>
+<!-- ====== /Botones flotantes ====== -->
+
 <body>
 <header class="site-header">
   <div class="wrap">
@@ -12,7 +42,7 @@
       <div class="brand-hero__bg" aria-hidden="true"></div>
         <div class="brand-hero__content">
           <div class="wordmark"><span class="wordmark__text">BUGAMBILIA</span></div>
-          <p class="tagline">Corporativo · Programas para empresas</p>
+          <p class="tagline">Belleza Consciente</p>
         </div>
     </section>
     <nav class="site-nav" aria-label="Menú principal">
@@ -70,7 +100,7 @@
       </a>
 
       <div class="footer-copy">
-        <span>BUGAMBILIA &copy; 2025</span>
+        <span>BUGAMBILIA &copy; <span id="year"></span>. Todos los derechos reservados.</span>
         <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small>
       </div>
 
@@ -78,7 +108,9 @@
         <ul>
           <li><a href="https://wa.me/573052816294" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
             <!-- WhatsApp SVG -->
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.1 17.2c-.3-.2-1.8-.9-2-.9s-.5-.1-.7.2-.8.9-1 .9-.5 0-.9-.2-1.6-.8-2.9-2.1-2.1-2.6-2.3-3-.1-.6.1-.8.4-.4.5-.5c.2-.2.3-.3.4-.5s.1-.3 0-.5C10.2 9.1 9.4 7.6 9 7s-.8-.5-1.1-.5h-.4c-.1 0-.4.1-.6.3s-1 1-1 2.4 1 2.8 1.2 3 .9 1.4 2.2 2.7 3.1 2.2 3.5 2.4 1.7.7 2.3.9 1 .3 1.6.2c.5-.1 1.8-.7 2-1.4.2-.7.2-1.2.1-1.3s-.2-.2-.4-.3zM16 3C9.4 3 4 8.4 4 15c0 2.2.6 4.2 1.7 6l-1.1 4.1 4.2-1.1C10.6 24.9 13.2 26 16 26c6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg>
+            <svg viewBox="0 0 32 32" aria-hidden="true" role="img">
+              <path fill="currentColor" d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
+              </svg>
           </a></li>
           <li><a href="https://www.instagram.com/buga_bellezaconsciente?igsh=ZTc5bHM2MzRnMDlv" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <!-- Instagram SVG -->

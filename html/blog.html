@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- BLOG | Bugambilia -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blog | Bugambilia</title>
 
+  <!-- CSP/Policies (mismo setup del sitio) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' https: data:;
@@ -15,42 +18,36 @@
                  base-uri 'self';
                  frame-ancestors 'none';
                  upgrade-insecure-requests;">
-  <link rel="stylesheet" href="../principal.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    .footer-social svg { width: 22px; height: 22px; display:block; }
-    .footer-social a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; border:1px solid #e5e7eb; }
-    .footer-social a:hover { background: rgba(11,107,184,.06); }
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
 
-    .blog-grid{ display:grid; gap:1rem; grid-template-columns:repeat(3,minmax(0,1fr)); }
-    @media (max-width:900px){ .blog-grid{ grid-template-columns:repeat(2,1fr);} }
-    @media (max-width:600px){ .blog-grid{ grid-template-columns:1fr;} }
-    .post{ background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,.06); display:grid; }
-    .post__img{ aspect-ratio:16/9; background:#f6f6f6; }
-    .post__img img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .post__body{ padding:.9rem; display:grid; gap:.35rem; }
-    .post__title{ margin:0; color:rgb(11,107,184); font-size:1.15rem; }
-  </style>
+  <!-- Fuentes + CSS global -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../principal.css" />
+
+  <!-- Iconos -->
+  <link rel="icon" href="../img/bugambilia-favicon.ico" />
+  <link rel="apple-touch-icon" href="../img/bugambilia-180.png" sizes="180x180" />
 </head>
 <body>
-  <!-- HEADER unificado con hero y nav -->
+  <!-- HEADER unificado -->
   <header class="site-header">
     <div class="wrap">
-      <h1 class="brand sr-only">BUGAMBILIA</h1><br>
+      <h1 class="brand sr-only">BUGAMBILIA</h1><br />
       <section class="brand-hero" role="banner" aria-label="Blog Bugambilia">
         <div class="brand-hero__bg" aria-hidden="true"></div>
         <div class="brand-hero__content">
           <div class="wordmark"><span class="wordmark__text">BUGAMBILIA</span></div>
-          <p class="tagline">Blog · Belleza Consciente</p>
+          <p class="tagline">Belleza Consciente</p>
         </div>
       </section>
 
       <nav class="site-nav" aria-label="Menú principal">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
           <span class="nav-toggle-bars" aria-hidden="true">
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
           </span>
           <span class="nav-toggle-label">Menú</span>
         </button>
@@ -66,36 +63,65 @@
     </div>
   </header>
 
-  <main class="site-main"><div class="wrap">
-    <h2>Artículos recientes</h2>
-    <section class="blog-grid" aria-label="Listado de artículos">
-      <article class="post">
-        <div class="post__img"><img src="../img/aromaterapia1.jpg" alt="Aromaterapia en casa" loading="lazy" decoding="async"></div>
-        <div class="post__body">
-          <h3 class="post__title"><a href="./post-aromaterapia.html">Aromaterapia: guía de inicio</a></h3>
-          <p class="post__meta">5 min · Bienestar</p>
-          <p>Cómo elegir aceites esenciales y crear rutinas simples para tu día.</p>
-        </div>
-      </article>
-      <!-- Más posts… -->
-    </section>
-  </div></main>
+  <!-- CONTENIDO -->
+  <main class="site-main">
+    <div class="wrap">
+      <h2>Artículos recientes</h2>
 
-  <!-- FOOTER unificado con iconos SVG -->
+      <!-- Filtros (los procesa blog.js) -->
+      <form id="blog-filtros" class="filters" role="search" aria-label="Filtros del blog">
+        <div>
+          <label for="q">Buscar</label>
+          <input type="search" id="q" name="q" placeholder="aceites, rutina, velas…" autocomplete="off" />
+        </div>
+        <div>
+          <label for="tag">Etiqueta</label>
+          <select id="tag" name="tag"><option value="">Todas</option></select>
+        </div>
+        <div>
+          <label for="orden">Ordenar</label>
+          <select id="orden" name="orden">
+            <option value="fecha-desc">Más recientes</option>
+            <option value="fecha-asc">Más antiguos</option>
+            <option value="titulo-asc">Título A–Z</option>
+          </select>
+        </div>
+        <div aria-hidden="true"></div>
+      </form>
+
+      <!-- Estado accesible (búsqueda/paginación) -->
+      <p id="blog-status" role="status" aria-live="polite" style="margin:.5rem 0;"></p>
+
+      <!-- Grid (blog.js inyecta las tarjetas) -->
+      <section class="blog-grid" id="blog-grid" aria-busy="false" aria-live="polite"></section><br>
+
+      <!-- Paginación: agregamos #pagerNumbers para los botones 1,2,3... -->
+      <nav class="pager" aria-label="Paginación" style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:.5rem; align-items:center;">
+        <button class="btn" id="prev" type="button">← Anteriores</button>
+        <div id="pagerNumbers" class="pager__numbers" style="display:flex; gap:.25rem;"></div>
+        <span id="pageInfo" style="align-self:center;"></span>
+        <button class="btn" id="next" type="button">Siguientes →</button>
+      </nav>
+    </div>
+  </main>
+
+  <!-- FOOTER unificado -->
   <footer class="site-footer">
     <div class="footer-inner">
       <a class="footer-brand" href="principal.html" aria-label="Inicio Bugambilia">
-        <img class="footer-logo" src="../img/bugambilia-180.png" alt="Logo Bugambilia" width="48" height="48" loading="lazy" decoding="async">
+        <img class="footer-logo" src="../img/bugambilia-180.png" alt="Logo Bugambilia" width="48" height="48" loading="lazy" decoding="async" />
         <span class="footer-name">Bugambilia</span>
       </a>
       <div class="footer-copy">
-        <span>BUGAMBILIA &copy; 2025</span>
+        <span>BUGAMBILIA &copy; <span id="year"></span>. Todos los derechos reservados.</span>
         <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small>
       </div>
       <nav class="footer-social" aria-label="Redes sociales">
         <ul>
           <li><a href="https://wa.me/573052816294" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.1 17.2c-.3-.2-1.8-.9-2-.9s-.5-.1-.7.2-.8.9-1 .9-.5 0-.9-.2-1.6-.8-2.9-2.1-2.1-2.6-2.3-3-.1-.6.1-.8.4-.4.5-.5c.2-.2.3-.3.4-.5s.1-.3 0-.5C10.2 9.1 9.4 7.6 9 7s-.8-.5-1.1-.5h-.4c-.1 0-.4.1-.6.3s-1 1-1 2.4 1 2.8 1.2 3 .9 1.4 2.2 2.7 3.1 2.2 3.5 2.4 1.7.7 2.3.9 1 .3 1.6.2c.5-.1 1.8-.7 2-1.4.2-.7.2-1.2.1-1.3s-.2-.2-.4-.3zM16 3C9.4 3 4 8.4 4 15c0 2.2.6 4.2 1.7 6l-1.1 4.1 4.2-1.1C10.6 24.9 13.2 26 16 26c6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg>
+            <svg viewBox="0 0 32 32" aria-hidden="true" role="img">
+              <path fill="currentColor" d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
+              </svg>
           </a></li>
           <li><a href="https://www.instagram.com/buga_bellezaconsciente?igsh=ZTc5bHM2MzRnMDlv" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm11 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
@@ -111,6 +137,8 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script type="module" src="../js/blog.js"></script>
   <script type="module" src="../js/main.js"></script>
 </body>
 </html>

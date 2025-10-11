@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "aromaterapia-guia-inicio",
+    "titulo": "Aromaterapia: guía de inicio",
+    "extracto": "Cómo elegir aceites esenciales y crear una rutina simple en casa.",
+    "contenido": "<article class=\"article\"><p>La aromaterapia utiliza aceites esenciales para promover bienestar...</p><h2>Elegir tu primer aceite</h2><ul><li>Lavanda</li><li>Eucalipto</li><li>Cítricos</li></ul><p>Comienza con difusor 10–15 min.</p></article>",
+    "tags": ["bienestar", "aromaterapia", "hogar"],
+    "categoria": "Bienestar",
+    "autor": "Equipo Bugambilia",
+    "fecha": "2025-08-20",
+    "lecturaMin": 5,
+    "portada": "../img/aromaterapia1.jpg",
+    "seo": {
+      "title": "Aromaterapia: guía de inicio | Bugambilia",
+      "description": "Primeros pasos con aceites esenciales, difusor y rutinas caseras."
+    }
+  },
+  {
+    "slug": "rutina-facial-basica",
+    "titulo": "Rutina facial básica en 5 pasos",
+    "extracto": "Limpieza, tónico, serum, crema y protector: lo esencial.",
+    "contenido": "<article class=\"article\"><p>Una rutina sencilla y constante produce mejores resultados...</p><ol><li>Limpieza</li><li>Tónico</li><li>Sérum</li><li>Hidratante</li><li>Protector solar</li></ol></article>",
+    "tags": ["facial", "cuidado-personal"],
+    "categoria": "Cuidado facial",
+    "autor": "Equipo Bugambilia",
+    "fecha": "2025-09-02",
+    "lecturaMin": 4,
+    "portada": "../img/facial.jpg",
+    "seo": {
+      "title": "Rutina facial básica en 5 pasos | Bugambilia",
+      "description": "Implementa una rutina efectiva y simple sin complicarte."
+    }
+  },
+  {
+    "slug": "velas-aromaticas-ambiente",
+    "titulo": "Velas aromáticas: crea ambiente sin excesos",
+    "extracto": "Tips para usar velas de forma segura y agradable en casa.",
+    "contenido": "<article class=\"article\"><p>Menos es más: 20–30 min son suficientes para aromatizar...</p><h3>Seguridad</h3><p>Vigila la vela, corta la mecha y ventila.</p></article>",
+    "tags": ["aromaterapia", "hogar"],
+    "categoria": "Hogar",
+    "autor": "Equipo Bugambilia",
+    "fecha": "2025-09-18",
+    "lecturaMin": 3,
+    "portada": "../img/velas.jpg",
+    "seo": {
+      "title": "Velas aromáticas: crea ambiente | Bugambilia",
+      "description": "Aromatiza tu hogar con seguridad y buen gusto."
+    }
+  }
+]

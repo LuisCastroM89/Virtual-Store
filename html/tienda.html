@@ -30,54 +30,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="../principal.css" />
-
-  <style>
-    /* Ajuste mínimo para los iconos del footer (mover a principal.css si gustas) */
-    .footer-social svg { width: 22px; height: 22px; display: block; }
-    .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid #e5e7eb; }
-    .footer-social a:hover { background: rgba(11,107,184,.06); }
-
-    /* ======= TIENDA ======= */
-    .filters{
-      display: grid; gap: .75rem; grid-template-columns: repeat(4, minmax(0,1fr));
-      background: #fff; border: 1px solid #eee; border-radius: 12px; padding: .75rem; margin: 1rem 0;
-    }
-    @media (max-width:900px){ .filters{ grid-template-columns: 1fr 1fr; } }
-    @media (max-width:600px){ .filters{ grid-template-columns: 1fr; } }
-
-    .filters label{ font-weight:600; font-size:.95rem; color: rgb(11,107,184); }
-    .filters select, .filters input{
-      width: 100%; border: 1px solid #e5e7eb; border-radius: 10px; padding: .55rem .65rem; font-size: 1rem;
-    }
-
-    .grid{
-      display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-    @media (max-width:900px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width:600px){ .grid{ grid-template-columns: 1fr; } }
-
-    .card{
-      background:#fff; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,.06);
-      display:grid; grid-template-rows:auto 1fr auto;
-    }
-    .card__img{ aspect-ratio: 1 / 1; background:#f6f6f6; }
-    .card__img img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .card__body{ padding: .85rem; display:grid; gap:.25rem; }
-    .card__title{ font-weight:700; font-size:1.05rem; color: rgb(11,107,184); margin:0; }
-    .card__meta{ font-size:.95rem; color:#444; }
-    .card__price{ font-weight:700; margin-top:.25rem; }
-    .card__cta{ display:flex; gap:.5rem; padding:.85rem; border-top:1px solid #eee; }
-    .btn{
-      display:inline-flex; justify-content:center; align-items:center; gap:.4rem;
-      padding:.5rem .75rem; border-radius:10px; border:1px solid #e5e7eb; background:#fff; cursor:pointer;
-      transition: transform .15s ease, background .2s ease, border-color .2s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgb(231,243,255); border-color: rgb(11,107,184); }
-    .btn--primary{ background: rgb(3,193,226); color:#fff; border-color: transparent; }
-    .btn--primary:hover{ background: rgb(11,107,184); }
-    .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
-  </style>
 </head>
+
+<!-- ====== Botones flotantes: WhatsApp + Trabaja con Nosotros (vertical) ====== -->
+<nav class="fab" aria-label="Acciones rápidas">
+  <!-- Botón WhatsApp (fondo blanco, icono fucsia grande) -->
+  <a class="fab__btn fab__btn--wa" 
+     href="https://wa.me/573052816294" 
+     target="_blank" rel="noopener" 
+     aria-label="Abrir WhatsApp de Bugambilia">
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
+    </svg>
+  </a>
+
+  <!-- Botón Trabaja con Nosotros (vertical con texto rotado 90° y centrado) -->
+  <a class="fab__btn fab__btn--jobs-vertical" 
+     href="trabaja-con-nosotros.html"
+     aria-label="Trabaja con nosotros">
+    <svg class="fab__icon-briefcase" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M9 3a2 2 0 00-2 2v1H5a2 2 0 00-2 2v3h18V8a2 2 0 00-2-2h-2V5a2 2 0 00-2-2H9zm6 3V5a1 1 0 00-1-1h-4a1 1 0 00-1 1v1h6zM3 12v6a2 2 0 002 2h14a2 2 0 002-2v-6h-6v1a1 1 0 01-1 1h-4a1 1 0 01-1-1v-1H3zm8 1h2v1h-2v-1z"/>
+    </svg>
+    <span class="fab__label fab__label--vertical">
+      <!-- Wrap centrado absoluto -->
+      <span class="flip-wrap">
+        <span class="flip-rot">¡Trabaja con nosotros!</span>
+      </span>
+    </span>
+  </a>
+</nav>
+<!-- ====== /Botones flotantes ====== -->
+
 <body>
   <!-- HEADER unificado -->
   <header class="site-header">
@@ -87,7 +70,7 @@
         <div class="brand-hero__bg" aria-hidden="true"></div>
         <div class="brand-hero__content">
           <div class="wordmark"><span class="wordmark__text" aria-label="Bugambilia">BUGAMBILIA</span></div>
-          <p class="tagline">Tienda · Belleza Consciente</p>
+          <p class="tagline">Belleza Consciente</p>
         </div>
       </section>
 
@@ -154,38 +137,93 @@
       <!-- Grid de productos -->
       <section aria-live="polite" aria-busy="false">
         <h2>Productos</h2>
-        <div id="grid" class="grid" aria-busy="false">
-          <!-- Ejemplos (puedes borrarlos si cargas JSON con data-src en este div) -->
-          <article class="card" data-cat="facial" data-precio="59000">
-            <div class="card__img">
-              <img src="../img/kit-afeitada.jpg" alt="Sérum facial regenerante 30ml" loading="lazy" decoding="async" width="800" height="800">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">Sérum regenerante</h3>
-              <p class="card__meta">30 ml · Ingredientes orgánicos</p>
-              <p class="card__price">$59.000</p>
-            </div>
-            <div class="card__cta">
-              <button class="btn btn--primary" data-add>Agregar</button>
-              <a class="btn" href="#" aria-label="Ver detalles de Sérum regenerante">Ver</a>
-            </div>
-          </article>
 
-          <article class="card" data-cat="jaboneria" data-precio="18000">
-            <div class="card__img">
-              <img src="../img/jabones.jpg" alt="Jabón artesanal de lavanda" loading="lazy" decoding="async" width="800" height="800">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">Jabón Lavanda</h3>
-              <p class="card__meta">Barras · Hecho a mano</p>
-              <p class="card__price">$18.000</p>
-            </div>
-            <div class="card__cta">
-              <button class="btn btn--primary" data-add>Agregar</button>
-              <a class="btn" href="#" aria-label="Ver detalles de Jabón Lavanda">Ver</a>
-            </div>
-          </article>
-        </div>
+        <div id="grid" class="grid" aria-busy="false">
+          <article class="card" data-cat="facial" data-precio="59000">
+              <details class="card__panel">
+                <!-- Al tocar la imagen o el encabezado, se abren detalles -->
+                <summary class="card__summary" aria-controls="det-1">
+                  <div class="card__img">
+                    <img src="../img/kit-afeitada.jpg" alt="Sérum facial regenerante 30ml" loading="lazy" decoding="async" width="800" height="800">
+                  </div>
+                  <div class="card__head">
+                    <h3 class="card__title">Sérum regenerante</h3>
+                    <p class="card__price">$59.000</p>
+                  </div>
+                </summary>
+                <div id="det-1" class="card__details">
+                  <p class="card__meta">30 ml · Ingredientes orgánicos · Regenera y nutre la piel.</p>
+                  <div class="card__cta">
+                    <button class="btn btn--primary" data-add data-sku="SERUM-REG-30">Agregar</button>
+                    <a class="btn" href="#" aria-label="Ver más del producto Sérum regenerante">Ver</a>
+                  </div>
+                </div>
+              </details>
+            </article>
+
+            <article class="card" data-cat="jaboneria" data-precio="18000">
+              <details class="card__panel">
+                <summary class="card__summary" aria-controls="det-2">
+                  <div class="card__img">
+                    <img src="../img/jabones.jpg" alt="Jabón artesanal de lavanda" loading="lazy" decoding="async" width="800" height="800">
+                  </div>
+                  <div class="card__head">
+                    <h3 class="card__title">Jabón Lavanda</h3>
+                    <p class="card__price">$18.000</p>
+                  </div>
+                </summary>
+                <div id="det-2" class="card__details">
+                  <p class="card__meta">Barras · Hecho a mano · Aroma relajante de lavanda.</p>
+                  <div class="card__cta">
+                    <button class="btn btn--primary" data-add data-sku="JAB-LAV-100">Agregar</button>
+                    <a class="btn" href="#" aria-label="Ver más del producto Jabón Lavanda">Ver</a>
+                  </div>
+                </div>
+              </details>
+            </article>
+
+            <article class="card" data-cat="jaboneria" data-precio="18000">
+              <details class="card__panel">
+                <summary class="card__summary" aria-controls="det-2">
+                  <div class="card__img">
+                    <img src="../img/jabones.jpg" alt="Jabón artesanal de lavanda" loading="lazy" decoding="async" width="800" height="800">
+                  </div>
+                  <div class="card__head">
+                    <h3 class="card__title">Jabón Lavanda</h3>
+                    <p class="card__price">$18.000</p>
+                  </div>
+                </summary>
+                <div id="det-2" class="card__details">
+                  <p class="card__meta">Barras · Hecho a mano · Aroma relajante de lavanda.</p>
+                  <div class="card__cta">
+                    <button class="btn btn--primary" data-add data-sku="JAB-LAV-100">Agregar</button>
+                    <a class="btn" href="#" aria-label="Ver más del producto Jabón Lavanda">Ver</a>
+                  </div>
+                </div>
+              </details>
+            </article>
+
+            <article class="card" data-cat="jaboneria" data-precio="18000">
+              <details class="card__panel">
+                <summary class="card__summary" aria-controls="det-2">
+                  <div class="card__img">
+                    <img src="../img/jabones.jpg" alt="Jabón artesanal de lavanda" loading="lazy" decoding="async" width="800" height="800">
+                  </div>
+                  <div class="card__head">
+                    <h3 class="card__title">Jabón Lavanda</h3>
+                    <p class="card__price">$18.000</p>
+                  </div>
+                </summary>
+                <div id="det-2" class="card__details">
+                  <p class="card__meta">Barras · Hecho a mano · Aroma relajante de lavanda.</p>
+                  <div class="card__cta">
+                    <button class="btn btn--primary" data-add data-sku="JAB-LAV-100">Agregar</button>
+                    <a class="btn" href="#" aria-label="Ver más del producto Jabón Lavanda">Ver</a>
+                  </div>
+                </div>
+              </details>
+            </article>
+          </div>
       </section>
     </div>
   </main>
@@ -199,7 +237,7 @@
       </a>
 
       <div class="footer-copy">
-        <span>BUGAMBILIA &copy; 2025</span>
+        <span>BUGAMBILIA &copy; <span id="year"></span>. Todos los derechos reservados.</span>
         <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small>
       </div>
 
@@ -207,7 +245,9 @@
         <ul>
           <li><a href="https://wa.me/573052816294" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
             <!-- WhatsApp SVG -->
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.1 17.2c-.3-.2-1.8-.9-2-.9s-.5-.1-.7.2-.8.9-1 .9-.5 0-.9-.2-1.6-.8-2.9-2.1-2.1-2.6-2.3-3-.1-.6.1-.8.4-.4.5-.5c.2-.2.3-.3.4-.5s.1-.3 0-.5C10.2 9.1 9.4 7.6 9 7s-.8-.5-1.1-.5h-.4c-.1 0-.4.1-.6.3s-1 1-1 2.4 1 2.8 1.2 3 .9 1.4 2.2 2.7 3.1 2.2 3.5 2.4 1.7.7 2.3.9 1 .3 1.6.2c.5-.1 1.8-.7 2-1.4.2-.7.2-1.2.1-1.3s-.2-.2-.4-.3zM16 3C9.4 3 4 8.4 4 15c0 2.2.6 4.2 1.7 6l-1.1 4.1 4.2-1.1C10.6 24.9 13.2 26 16 26c6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg>
+            <svg viewBox="0 0 32 32" aria-hidden="true" role="img">
+              <path fill="currentColor" d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
+              </svg>
           </a></li>
           <li><a href="https://www.instagram.com/buga_bellezaconsciente?igsh=ZTc5bHM2MzRnMDlv" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <!-- Instagram SVG -->
@@ -228,5 +268,6 @@
 
   <script type="module" src="../js/tienda.js"></script>
   <script type="module" src="../js/main.js"></script>
+
 </body>
 </html>

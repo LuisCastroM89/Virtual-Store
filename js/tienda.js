@@ -1,14 +1,20 @@
-// tienda.js (ESM compatible) — Bugambilia
-// Control de filtros, orden y CTA 'Agregar' para la Tienda.
-// No depende de librerías externas. Compatible con CSP estricta.
+// tienda.js — Bugambilia
+// Lógica de la tienda: filtros, orden, carga opcional desde JSON y CTA "Agregar".
+// - Sin dependencias externas
+// - Seguro para CSP (no usa eval/inline)
+// - Accesible: comunica resultados en #catalog-status (aria-live)
 
 (() => {
   'use strict';
 
-  // Utilidades
+  // ---- Helpers ----
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+  // Sanitiza texto para evitar inyección accidental (defensa en profundidad)
   const safeText = (s) => String(s ?? '').replace(/[<>]/g, '').trim();
+
+  // Normaliza cadenas para búsquedas insensibles a acentos y mayúsculas
   const norm = (s) =>
     safeText(s)
       .toLowerCase()
@@ -17,16 +23,21 @@
       .replace(/[^\w\s-]/g, '')
       .trim();
 
-  const form = $('#filtros');
-  const grid = $('#grid');
-  const status = $('#catalog-status'); // opcional: <p id="catalog-status" aria-live="polite"></p>
+  const form = $('#filtros');                  // <form> de filtros
+  const grid = $('#grid');                     // contenedor de tarjetas
+  const status = $('#catalog-status');         // <p role="status"> (opcional pero recomendado)
 
-  if (!grid) return; // Nada que hacer sin el grid
+  if (!grid) return; // si la página no tiene grid, no ejecutamos nada
 
-  // ====== Carga opcional de productos desde JSON ======
-  // Si #grid tiene data-src="ruta.json", se cargan y renderizan las tarjetas.
+  // ---- Carga opcional de productos desde JSON ----
+  // Si el div#grid tiene data-src="ruta.json", se intenta cargar y renderizar.
   const dataSrc = grid?.dataset?.src;
 
+  /**
+   * Crea una tarjeta de producto a partir de un objeto producto.
+   * @param {Object} p - { nombre, precio, imagen, categoria, sku, meta, href, alt }
+   * @returns {HTMLElement} article.card
+   */
   const createCard = (p) => {
     const card = document.createElement('article');
     card.className = 'card';
@@ -52,19 +63,25 @@
     return card;
   };
 
-  // Formatea números a COP sin usar Intl si no estuviera disponible
+  /**
+   * Formatea un número a moneda COP. Usa Intl si está disponible.
+   */
   const fmtCOP = (n) => {
     try {
-      return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(Number(n) || 0);
+      return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 })
+        .format(Number(n) || 0);
     } catch {
+      // Fallback manual si Intl no estuviera disponible
       const x = Math.round(Number(n) || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
       return '$' + x;
     }
   };
 
-  // Carga JSON si corresponde
+  /**
+   * Carga productos desde dataSrc y los dibuja. Si falla, deja el grid como esté.
+   */
   const loadData = async () => {
-    if (!dataSrc) return;
+    if (!dataSrc) return; // nada que cargar
     setBusy(true);
     try {
       const res = await fetch(dataSrc, { method: 'GET', cache: 'no-store', credentials: 'omit' });
@@ -81,11 +98,11 @@
       announce('No se pudieron cargar los productos. Intenta más tarde.');
     } finally {
       setBusy(false);
-      applyFilters();
+      applyFilters(); // aplica filtros iniciales tras cargar
     }
   };
 
-  // ====== Filtros y orden ======
+  // ---- Filtros y orden ----
   const applyFilters = () => {
     const q = norm($('#q')?.value || '');
     const cat = $('#cat')?.value || '';
@@ -102,47 +119,49 @@
       const matchesCat = cat ? card.dataset.cat === cat : true;
       const price = parseInt(card.dataset.precio || '0', 10);
       const matchesPrice = rango ? price <= rango : true;
+
       const show = matchesText && matchesCat && matchesPrice;
       card.style.display = show ? '' : 'none';
       if (show) visibles++;
     });
 
-    // Orden
+    // Ordenar solo los visibles (si se selecciona un criterio)
     const visible = $$('.card', grid).filter((i) => i.style.display !== 'none');
     const comparators = {
-      'precio-asc': (a, b) => (+a.dataset.precio) - (+b.dataset.precio),
+      'precio-asc':  (a, b) => (+a.dataset.precio) - (+b.dataset.precio),
       'precio-desc': (a, b) => (+b.dataset.precio) - (+a.dataset.precio),
-      'nombre-asc': (a, b) =>
-        $('.card__title', a).textContent.localeCompare($('.card__title', b).textContent, 'es'),
+      'nombre-asc':  (a, b) => $('.card__title', a).textContent
+                                .localeCompare($('.card__title', b).textContent, 'es'),
     };
     const by = comparators[orden];
     if (by) visible.sort(by).forEach((el) => grid.appendChild(el));
 
-    // Anuncio accesible
+    // Comunicar resultado (accesible)
     announce(`${visibles} producto${visibles === 1 ? '' : 's'} visible${visibles === 1 ? '' : 's'}.`);
   };
 
-  // ====== Estado accesible / aria-live ======
+  // ---- Estado accesible / aria-live ----
   const setBusy = (flag) => {
     if (!grid) return;
     grid.setAttribute('aria-busy', flag ? 'true' : 'false');
   };
   const announce = (msg) => {
-    if (!status) return;
+    if (!status) return; // si no existe el <p id="catalog-status">, no anunciamos
     status.textContent = msg;
   };
 
-  // ====== CTA Agregar ======
+  // ---- CTA "Agregar" (placeholder de carrito) ----
   grid.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-add]');
     if (!btn) return;
     e.preventDefault();
+
     const sku = btn.getAttribute('data-sku') || '';
     btn.setAttribute('disabled', 'true');
     const oldText = btn.textContent;
     btn.textContent = 'Agregado ✓';
 
-    // Persistencia simple (localStorage) – placeholder para carrito real
+    // Persistencia básica en localStorage (se puede reemplazar por carrito real)
     try {
       const key = 'buga-cart';
       const cart = JSON.parse(localStorage.getItem(key) || '[]');
@@ -152,17 +171,36 @@
       console.warn('No se pudo usar localStorage', err);
     }
 
+    // Restaurar botón
     setTimeout(() => {
       btn.removeAttribute('disabled');
       btn.textContent = oldText;
     }, 1200);
   });
 
-  // ====== Eventos ======
+  // ---- Eventos ----
   if (form) form.addEventListener('input', applyFilters);
 
-  // Init
+  // ---- Inicio ----
   document.addEventListener('DOMContentLoaded', () => {
+    // Intentamos cargar JSON (si hay data-src) y, si no, filtramos lo que exista
     loadData().catch(() => applyFilters());
   });
+
+  /* Acordeón simple para la tienda (opcional):
+   Garantiza que solo un <details> quede abierto a la vez. */
+document.addEventListener('click', (ev) => {
+  const summary = ev.target.closest('.product__summary');
+  if (!summary) return;
+
+  const current = summary.parentElement; // <details>
+  if (!(current instanceof HTMLDetailsElement)) return;
+
+  if (!current.open) {
+    // Si se va a abrir, cierra otros
+    document.querySelectorAll('.shop-grid .product__panel[open]')
+      .forEach(det => { if(det !== current) det.removeAttribute('open'); });
+  }
+});
+
 })();
