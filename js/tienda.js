@@ -190,16 +190,19 @@
   /* Acordeón simple para la tienda (opcional):
    Garantiza que solo un <details> quede abierto a la vez. */
 document.addEventListener('click', (ev) => {
-  const summary = ev.target.closest('.product__summary');
+  const summary = ev.target.closest('.card__summary');           // <— ajusta a tu HTML real
   if (!summary) return;
 
-  const current = summary.parentElement; // <details>
+  const current = summary.parentElement;                          // debe ser <details>
   if (!(current instanceof HTMLDetailsElement)) return;
 
+  // Solo cuando se va a abrir (estaba cerrado antes del click)
   if (!current.open) {
-    // Si se va a abrir, cierra otros
-    document.querySelectorAll('.shop-grid .product__panel[open]')
-      .forEach(det => { if(det !== current) det.removeAttribute('open'); });
+    // Limita el alcance al mismo grid/listado
+    const scope = current.closest('.grid, .shop-grid, main, body');
+    scope.querySelectorAll('details[open]').forEach((det) => {
+      if (det !== current) det.open = false;                      // más claro que removeAttribute
+    });
   }
 });
 
