@@ -227,7 +227,7 @@ img{
   position: relative;
   isolation: isolate;
   /* IMPORTANTE: La ruta es relativa al CSS. Ajusta si tu CSS está en /css y la imagen en /img */
-  background-image: url("img/bugambilia-puerta.png");
+  background-image: url("img/bugambilia-puerta1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -382,6 +382,12 @@ img{
   align-items: stretch;
   margin: clamp(1.25rem, 3vw, 2.5rem) 0;
 }
+
+.feature-intro{
+  margin: clamp(1.25rem, 3vw, 2.5rem) 0;
+  text-align: justify;
+}
+
 .feature.feature--reverse{
   grid-template-columns: 60% 40%;            /* imagen / texto */
   grid-template-areas: "media content";
