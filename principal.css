@@ -231,8 +231,22 @@ img{
 }
 
 /* =========================================================
+   SEPARADOR DECORATIVO
+   ========================================================= */
+.hero-spacer{
+  height: clamp(8px, 1.2vw, 12px);
+  background: linear-gradient(180deg, var(--c-terra), rgba(235,177,202,0));
+  border-bottom: 1px solid rgba(236,224,208,.8);
+  margin-bottom: clamp(.75rem, 2vw, 1.25rem);
+}
+
+/* =========================================================
    BRAND HERO (marca sobre imagen + overlay + brillo)
    ========================================================= */
+.site-main{
+  padding: 0 1rem 2rem;
+}
+
 .brand-hero {
   position: relative;
   inset: 0;                    /* lo alinea con los bordes del documento */
@@ -240,7 +254,7 @@ img{
   margin: 0;                   /* elimina márgenes heredados */
   padding: clamp(2rem, 6vw, 6rem) 1rem; /* mantiene padding interior responsivo */
   
-  display: grid; place-items: center;
+  display: grid; 
   place-items: center;
   overflow: hidden;
 
@@ -250,7 +264,7 @@ img{
   background-repeat: no-repeat;
 
   /* Altura flexible pero visualmente agradable */
-  min-height: 20vh; /* ocupa 60% del alto visible */
+  min-height: 20vh; /* ocupa 20% del alto visible */
 }
 
 /* Capa de color suave animada (ACTUALIZADO a paleta nueva) */
@@ -387,13 +401,13 @@ img{
 
 /* Compacta la altura en escritorios grandes */
 @media (min-width: 1200px){
-  .brand-hero{ min-height: 42vh; padding: clamp(1.5rem, 3vw, 3rem) 1rem; }
+  .brand-hero{ min-height: 20vh; padding: clamp(1.5rem, 3vw, 3rem) 1rem; }
 }
 @media (min-width: 1600px){
-  .brand-hero{ min-height: 36vh; padding: clamp(1.25rem, 2.5vw, 2.5rem) 1rem; }
+  .brand-hero{ min-height: 20vh; padding: clamp(1.25rem, 2.5vw, 2.5rem) 1rem; }
 }
 @media (min-width: 1920px){
-  .brand-hero{ min-height: 32vh; padding: clamp(1rem, 2vw, 2rem) 1rem; }
+  .brand-hero{ min-height: 20vh; padding: clamp(1rem, 2vw, 2rem) 1rem; }
 }
 
 /* =========================================================
@@ -522,8 +536,8 @@ img{
    ========================================================= */
 .categories{
   display: grid;
-  gap: 16px;
-  margin: clamp(1rem, 3vw, 2rem) 0;
+  row-gap: clamp(10px, 1.6vw, 16px);
+  margin-top: clamp(.25rem, 1.6vw, .75rem);
   /* En pantallas grandes: una fila con 7 columnas (todas visibles) */
   grid-template-columns: repeat(7, minmax(0, 1fr));
   justify-items: center;
@@ -540,12 +554,18 @@ img{
   text-decoration: none;
   color: inherit;
   transition: transform .15s ease;
+  transform: translateZ(0); /* suaviza GPU */
 }
 .category:hover{ transform: translateY(-3px); }
+.category:hover .category__avatar{
+  transform: translateY(-2px);
+  transition: transform .18s ease;
+}
 /* Avatar circular compacto */
 .category__avatar{
-  inline-size: 110px;
-  block-size: 110px;
+  inline-size: clamp(96px, 9vw, 116px);
+  block-size: clamp(96px, 9vw, 116px);
+  border: 3px solid rgba(236,224,208,.9); /* aro sutil beige */
   border-radius: 999px;
   overflow: hidden;
   background: var(--c-beige);  /* aro de fondo suave al cargar */
@@ -556,18 +576,22 @@ img{
 }
 /* Etiqueta */
 .category__label{
+  margin-top: .35rem;
   font-weight: 700;
   font-size: .98rem;
   color: var(--c-oliva);
   text-align: center;
+  letter-spacing: .2px;
+  line-height: 1.1;
 }
 /* título visible y coherente con tu marca */
 .section-title{
-  margin: 0 0 .75rem 0;
+  margin: clamp(1rem, 2.4vw, 1.5rem) 0 .5rem;
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(1.25rem, 2.2vw, 1.8rem);
   color: var(--c-oliva);
   text-align: center;        /* o left, como prefieras */
+  scroll-margin-top: 72px;
 }
 
 /* Medianas: 3 columnas */
