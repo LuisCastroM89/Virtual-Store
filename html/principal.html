@@ -21,7 +21,7 @@
   <meta property="og:site_name" content="Bugambilia" />
   <meta property="og:locale" content="es_CO" />
   <meta property="og:title" content="Bugambilia | Belleza consciente" />
-  <meta property="og:description" content="Productos orgánicos: aromaterapia, facial, corporal, capilar y más." />
+  <meta property="og:description" content="Productos orgánicos: aromaterapia, facial, corporal y más." />
   <meta property="og:url" content="https://www.bugambilia.com/" />
   <meta property="og:image" content="https://www.bugambilia.com/img/LOGO-OG-1200x630.png" />
   <meta property="og:image:width" content="1200" />
@@ -37,66 +37,34 @@
   <link rel="icon" href="../img/bugambilia-favicon.ico" />
   <link rel="apple-touch-icon" href="../img/bugambilia-180.png" sizes="180x180" />
 
-  <!-- Fuentes (carga rápida) -->
+  <!-- Fuentes (Playfair Display + Lato) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Mantén Inter/Cormorant si los usas en otras páginas; aquí añadimos las nuevas familias -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- Content Security Policy, para que no ejecute Scrips de terceros -->
-    <meta http-equiv="Content-Security-Policy"
-      content="default-src 'self';
-               img-src 'self' https: data:;
-               style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-               font-src https://fonts.gstatic.com;
-               script-src 'self' 'unsafe-inline';
-               connect-src 'self';">
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 img-src 'self' https: data:;
+                 style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+                 font-src https://fonts.gstatic.com;
+                 script-src 'self' 'unsafe-inline';
+                 connect-src 'self';">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="../principal.css?v=3" />
-
-  <!-- Datos estructurados: Organization + WebSite (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Bugambilia",
-    "url":"https://www.bugambilia.com/",
-    "logo":"https://www.bugambilia.com/img/bugambilia-180.png",
-    "sameAs":[
-      "https://www.instagram.com/buga_bellezaconsciente",
-      "https://www.facebook.com/",
-      "https://www.tiktok.com/@ecotienda.buga"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "url":"https://www.bugambilia.com/",
-    "name":"Bugambilia",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://www.bugambilia.com/buscar?q={search_term_string}",
-      "query-input":"required name=search_term_string"
-    }
-  }
-  </script>
+  <!-- CSS principal (actualizado) -->
+  <link rel="stylesheet" href="../principal.css?v=4" />
 </head>
 
 <!-- ====== Botones flotantes: WhatsApp + Trabaja con Nosotros (vertical) ====== -->
 <nav class="fab" aria-label="Acciones rápidas">
-  <!-- Botón WhatsApp (fondo blanco, icono fucsia grande) -->
-  <a class="fab__btn fab__btn--wa" 
-     href="https://wa.me/573052816294" 
-     target="_blank" rel="noopener" 
-     aria-label="Abrir WhatsApp de Bugambilia">
-    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-      <path d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
-    </svg>
+  <a href="https://wa.me/573052816294" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 2C6.48 2 2 6.25 2 11.5c0 1.96.63 3.77 1.69 5.27L3 22l5.47-1.43A10.2 10.2 0 0 0 12 21c5.52 0 10-4.25 10-9.5S17.52 2 12 2zm0 17c-1.43 0-2.82-.36-4.05-1.05l-.29-.16-3.2.84.85-3.07-.19-.31A7.67 7.67 0 0 1 4.5 11.5C4.5 7.36 8.17 4 12 4s7.5 3.36 7.5 7.5S15.83 19 12 19zm4.19-5.29c-.23-.11-1.35-.66-1.56-.73-.21-.08-.36-.11-.51.11-.15.22-.59.73-.72.88-.13.15-.26.16-.48.06-.22-.1-.9-.33-1.72-1.1-.63-.56-1.06-1.25-1.19-1.47-.13-.22-.01-.33.1-.44.1-.1.22-.26.32-.39.1-.13.13-.22.2-.36.07-.15.03-.28-.01-.39-.04-.1-.5-1.17-.68-1.6-.18-.43-.36-.37-.5-.37h-.42c-.15 0-.38.05-.57.26-.2.21-.75.73-.75 1.79s.77 2.08.87 2.23c.1.14 1.52 2.33 3.69 3.26.52.22.93.36 1.26.46.52.17.98.14 1.34.09.41-.06 1.26-.51 1.44-1.02.18-.51.18-.94.13-1.02-.05-.08-.2-.12-.41-.23z"/>
+              </svg>
   </a>
 
-  <!-- Botón Trabaja con Nosotros (vertical con texto rotado 90° y centrado) -->
+  <!-- Botón Trabaja con Nosotros (vertical) -->
   <a class="fab__btn fab__btn--jobs-vertical" 
      href="trabaja-con-nosotros.html"
      aria-label="Trabaja con nosotros">
@@ -104,7 +72,6 @@
       <path d="M9 3a2 2 0 00-2 2v1H5a2 2 0 00-2 2v3h18V8a2 2 0 00-2-2h-2V5a2 2 0 00-2-2H9zm6 3V5a1 1 0 00-1-1h-4a1 1 0 00-1 1v1h6zM3 12v6a2 2 0 002 2h14a2 2 0 002-2v-6h-6v1a1 1 0 01-1 1h-4a1 1 0 01-1-1v-1H3zm8 1h2v1h-2v-1z"/>
     </svg>
     <span class="fab__label fab__label--vertical">
-      <!-- Wrap centrado absoluto -->
       <span class="flip-wrap">
         <span class="flip-rot">¡Trabaja con nosotros!</span>
       </span>
@@ -113,26 +80,26 @@
 </nav>
 <!-- ====== /Botones flotantes ====== -->
 
-
 <body>
   <!-- HEADER -->
   <header class="site-header">
     <div class="wrap">
       <h1 class="brand sr-only">BUGAMBILIA</h1><br>
-          <!-- BRAND HERO (marca tipográfica animada, SEO-friendly) -->
-      <section class="brand-hero" role="banner" aria-label="Marca Bugambilia">
+
+      <!-- BRAND HERO (marca + CTAs animados) -->
+      <section class="brand-hero full-bleed" role="banner" aria-label="Marca Bugambilia">
         <div class="brand-hero__bg" aria-hidden="true"></div>
 
         <div class="brand-hero__content">
-          <!-- Palabra de marca -->
           <div class="wordmark">
             <span class="wordmark__text" aria-label="Bugambilia">BUGAMBILIA</span>
           </div>
-          <!-- Eslogan (usa el texto tal como lo mostraste en la imagen) -->
-          <p class="tagline">Belleza Consciente</p>
+          <p class="tagline">Belleza Consciente</p><br>
+          <p class="tagline"> <small> Donde la belleza y el bienestar se encuentran </small></p>
         </div>
       </section>
 
+      <!-- NAV principal (se mantiene) -->
       <nav class="site-nav" aria-label="Menú principal">
         <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
           <span class="nav-toggle-bars" aria-hidden="true"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></span>
@@ -153,142 +120,168 @@
   <!-- MAIN -->
   <main class="site-main">
     <div class="wrap">
-      <section class="feature-intro">
-        <figure class="feature__media reveal">
-            <img
-              src="../img/aromaterapia1.jpg"
-              alt="Ritual diario de aromaterapia"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+      <section class="about-main">
+        <div class="about-main__inner">
+          <!-- Foto circular (izquierda en desktop, arriba en móviles) -->
+          <figure class="about-main__avatar">
+            <img src="../img/mari.jpg" alt="Foto Perfil">
           </figure>
-        <article class="feature__content">
-          <h2>Bugambilia</h2> Un espacio para fortalecer lazos de amor propio, trayendo más que productos,
-          experiencias de bienestar y cuidado personal. Nuestra misión es ofrecer productos de alta calidad,
-          elaborados con ingredientes naturales y orgánicos, que respeten tanto tu piel como el medio ambiente.
-          <br>
-        </article>
+
+          <!-- Texto + CTA -->
+          <div class="about-main__content">
+            <h2 class="about-main__title">Belleza natural con propósito</h2>
+            <p class="about-main__copy">
+              Somos un espacio curado que va más allá de la cosmética. Bugambilia es la 
+              herramienta que necesitas para transformar tus rutinas de cuidado en rituales 
+              activos. Aquí encontrarás una selección rigurosa de cosmética orgánica y confiable 
+              (priorizando marcas colombianas) y un acompañamiento que te enseña a escuchar tu 
+              piel y habitar tu bienestar desde el interior. Te invitamos a elegir la belleza 
+              como un acto consciente y medicina diaria.
+            </p>
+
+            <a href="../html/quienes-somos.html#marcas" class="btn btn--cta-terra">
+              Descubre nuestras marcas aliadas
+            </a><br>
+          </div>
+        </div>
+      </section><br>
+
+      <!------------------ === CATEGORÍAS EN LÍNEA ------ ---------->
+      <h2 id="sec-categories-principales" class="section-title">Categorías principales</h2>
+      <section class="categories" id="categories" aria-labelledby="sec-categories-principales">
+        <!-- Item -->
+        <a class="category" href="#sec-aromaterapia">
+          <span class="category__avatar">
+            <img src="../img/aromaterapia1.jpg" alt="Aromaterapia">
+          </span>
+          <span class="category__label">Aromaterapia</span>
+        </a>
+
+        <a class="category" href="#sec-bienestar">
+          <span class="category__avatar">
+            <img src="../img/bienestar.jpg" alt="Bienestar">
+          </span>
+          <span class="category__label">Bienestar</span>
+        </a>
+
+        <a class="category" href="#sec-higiene">
+          <span class="category__avatar">
+            <img src="../img/pasta-dental.jpg" alt="Higiene Bucal">
+          </span>
+          <span class="category__label">Higiene Bucal</span>
+        </a>
+
+        <a class="category" href="#sec-facial">
+          <span class="category__avatar">
+            <img src="../img/kit-afeitada.jpg" alt="Facial">
+          </span>
+          <span class="category__label">Facial</span>
+        </a>
+
+        <a class="category" href="#sec-corporal">
+          <span class="category__avatar">
+            <img src="../img/corporal.jpg" alt="Corporal">
+          </span>
+          <span class="category__label">Corporal</span>
+        </a>
+
+        <a class="category" href="#sec-capilar">
+          <span class="category__avatar">
+            <img src="../img/capilar.jpg" alt="Capilar">
+          </span>
+          <span class="category__label">Capilar</span>
+        </a>
+
+        <a class="category" href="#sec-jaboneria">
+          <span class="category__avatar">
+            <img src="../img/jabones.jpg" alt="Jabonería">
+          </span>
+          <span class="category__label">Jabonería</span>
+        </a>
       </section>
-      <!-- 1)  -->
-      <section class="feature_categories" id="categories" aria-labelledby="sec-categories-principales">
+
+      <!-- Sección de “tarjetas” original para anclas (mantenida por SEO y contenido).
+           Puedes conservarla o simplificarla si lo deseas. -->
+      <section class="feature_categories legacy-cards" aria-hidden="true">
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/aromaterapia1.jpg"
-              alt="Ritual diario de aromaterapia"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/aromaterapia1.jpg" alt="Ritual diario de aromaterapia" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-aromaterapia">Aromaterapia</h2>
+          <h2 id="sec-aromaterapia">Aromaterapia</h2>
         </div>
-        <!-- 1) Imagen Bienestar -->
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/bienestar.jpg"
-              alt="Productos de bienestar"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/bienestar.jpg" alt="Productos de bienestar" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-bienestar">Bienestar</h2>
+          <h2 id="sec-bienestar">Bienestar</h2>
         </div>
-        <!-- 2) Imagen Higiene Bucal -->
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/pasta-dental.jpg"
-              alt="Productos de higiene bucal"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/pasta-dental.jpg" alt="Productos de higiene bucal" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-higiene">Higiene Bucal</h2>
+          <h2 id="sec-higiene">Higiene Bucal</h2>
         </div>
-        <!-- 4) Imagen Facial-->
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/kit-afeitada.jpg"
-              alt="Cuidado facial natural"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/kit-afeitada.jpg" alt="Cuidado facial natural" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-facial">Facial</h2>
+          <h2 id="sec-facial">Facial</h2>
         </div>
-        <!-- 5) Img Corporal  -->
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/corporal.jpg"
-              alt="Cuidado corporal"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/corporal.jpg" alt="Cuidado corporal" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-corporal">Corporal</h2>
+          <h2 id="sec-corporal">Corporal</h2>
         </div>
-        <!-- 6) Imagen Capilar -->
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/capilar.jpg"
-              alt="Cuidado capilar"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/capilar.jpg" alt="Cuidado capilar" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-capilar">Capilar</h2>
+          <h2 id="sec-capilar">Capilar</h2>
         </div>
-        <!-- 7) Texto Jabonería -->
         <div>
           <figure class="feature__media reveal">
-            <img
-              src="../img/jabones.jpg"
-              alt="Jabones artesanales"
-              loading="lazy"
-              decoding="async"
-              width="1600" height="1066">
+            <img src="../img/jabones.jpg" alt="Jabones artesanales" loading="lazy" decoding="async" width="1600" height="1066">
           </figure>
-        <h2 id="sec-jaboneria">Jabonería</h2>
+          <h2 id="sec-jaboneria">Jabonería</h2>
         </div>
       </section>
+
     </div>
   </main>
 
- <!-- FOOTER unificado con iconos SVG -->
-  <footer class="site-footer">
+  <!-- FOOTER terracota (punto 6) -->
+  <footer class="site-footer site-footer--terra">
     <div class="footer-inner">
       <a class="footer-brand" href="principal.html" aria-label="Inicio Bugambilia">
         <img class="footer-logo" src="../img/bugambilia-180.png" alt="Logo Bugambilia" width="48" height="48" loading="lazy" decoding="async">
         <span class="footer-name">Bugambilia</span>
       </a>
 
+      <!-- Bloque de información actualizado -->
       <div class="footer-copy">
         <span>BUGAMBILIA &copy; <span id="year"></span>. Todos los derechos reservados.</span>
-        <small>Diseñado y desarrollado por Luis De J. Castro Merlano</small>
+        <small>Calle 20 #20-07 – Santa Marta · 305 281 6294 · <a class="footer-mail" href="mailto:bugambiliastm@gmail.com">bugambiliastm@gmail.com</a></small>
+        <small><a href="#" class="footer-link">Política de privacidad</a> | <a href="../html/quienes-somos.html#cta" class="footer-link">Contáctanos</a></small>
       </div>
 
+      <!-- Redes  -->
       <nav class="footer-social" aria-label="Redes sociales">
         <ul>
-          <li><a href="https://wa.me/573052816294" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg viewBox="0 0 32 32" aria-hidden="true" role="img">
-              <path fill="currentColor" d="M19.11 17.53c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.32.41-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.63 1.1 2.81c.13.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.16-.52-.29zM16.02 3.2c-7.09 0-12.84 5.75-12.84 12.84 0 2.16.56 4.26 1.63 6.12L3 29l6.99-1.81a12.77 12.77 0 006.03 1.54c7.09 0 12.84-5.75 12.84-12.84S23.11 3.2 16.02 3.2zM16 27c-1.94 0-3.86-.5-5.54-1.46l-.4-.23-4.06 1.06 1.09-3.96-.26-.4A10.97 10.97 0 015 16.04C5 10.5 9.46 6.03 15 6.03S25 10.5 25 16.04 20.54 27 16 27z"/>
+          <li>
+            <a href="https://wa.me/573052816294" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 2C6.48 2 2 6.25 2 11.5c0 1.96.63 3.77 1.69 5.27L3 22l5.47-1.43A10.2 10.2 0 0 0 12 21c5.52 0 10-4.25 10-9.5S17.52 2 12 2zm0 17c-1.43 0-2.82-.36-4.05-1.05l-.29-.16-3.2.84.85-3.07-.19-.31A7.67 7.67 0 0 1 4.5 11.5C4.5 7.36 8.17 4 12 4s7.5 3.36 7.5 7.5S15.83 19 12 19zm4.19-5.29c-.23-.11-1.35-.66-1.56-.73-.21-.08-.36-.11-.51.11-.15.22-.59.73-.72.88-.13.15-.26.16-.48.06-.22-.1-.9-.33-1.72-1.1-.63-.56-1.06-1.25-1.19-1.47-.13-.22-.01-.33.1-.44.1-.1.22-.26.32-.39.1-.13.13-.22.2-.36.07-.15.03-.28-.01-.39-.04-.1-.5-1.17-.68-1.6-.18-.43-.36-.37-.5-.37h-.42c-.15 0-.38.05-.57.26-.2.21-.75.73-.75 1.79s.77 2.08.87 2.23c.1.14 1.52 2.33 3.69 3.26.52.22.93.36 1.26.46.52.17.98.14 1.34.09.41-.06 1.26-.51 1.44-1.02.18-.51.18-.94.13-1.02-.05-.08-.2-.12-.41-.23z"/>
               </svg>
-          </a></li>
+            </a>
+          </li>
           <li><a href="https://www.instagram.com/buga_bellezaconsciente?igsh=ZTc5bHM2MzRnMDlv" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-            <!-- Instagram SVG -->
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm11 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
           </a></li>
           <li><a href="https://www.facebook.com/share/1H86B4ZwiL/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
-            <!-- Facebook SVG -->
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 22v-8h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v3H6v4h3v8h4z"/></svg>
           </a></li>
           <li><a href="https://www.tiktok.com/@ecotienda.buga?_t=ZS-90KlV4bvNkv&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
-            <!-- TikTok SVG -->
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 8.5a7 7 0 01-5-2.1V16a6 6 0 11-6-6c.3 0 .7 0 1 .1V13a3 3 0 100 6 3 3 0 003-3V2h4a7 7 0 003 6.5z"/></svg>
           </a></li>
         </ul>
@@ -296,8 +289,7 @@
     </div>
   </footer>
 
-  <!-- JS Bootstrap -->
+  <!-- JS Bootstrap del sitio -->
   <script type="module" src="../js/main.js"></script>
-  
 </body>
 </html>
